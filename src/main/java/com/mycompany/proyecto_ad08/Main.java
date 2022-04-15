@@ -21,6 +21,7 @@ public class Main {
         PanelPrincipal nuevo = new PanelPrincipal();
         nuevo.setVisible(true);
         CargarTablaAlimentos.cargandoTabla();
+        CrearMenu.crearModelo();
     }
 
 }

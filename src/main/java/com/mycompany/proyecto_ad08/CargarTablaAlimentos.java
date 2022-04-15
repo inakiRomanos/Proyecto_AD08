@@ -18,7 +18,8 @@ import javax.swing.table.DefaultTableModel;
  */
 public class CargarTablaAlimentos {
 
-
+    public  static DefaultTableModel modeloAlimentos = new DefaultTableModel();
+           
     public CargarTablaAlimentos() {
     }
 
@@ -27,10 +28,10 @@ public class CargarTablaAlimentos {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("objectdb:db/database.inakiRomanos");
         EntityManager em = emf.createEntityManager();
         
-        modelo = new DefaultTableModel();
+        modeloAlimentos = new DefaultTableModel();
 
-        modelo.addColumn("NOMBRE");
-        modelo.addColumn("CALORIAS");
+        modeloAlimentos.addColumn("NOMBRE");
+        modeloAlimentos.addColumn("CALORIAS");
 
 
         TypedQuery<Alimentos> query = em.createQuery("SELECT a FROM Alimentos a", Alimentos.class);
@@ -41,11 +42,11 @@ public class CargarTablaAlimentos {
             Object[] extraccion = new Object[]{extraerNombre,extraerCalorias};
             return extraccion;
         }).forEachOrdered(extraccion -> {
-            modelo.addRow(extraccion);
+            modeloAlimentos.addRow(extraccion);
         });
 
         
-       PanelPrincipal.tablaAlimentos.setModel(modelo);
+       PanelPrincipal.tablaAlimentos.setModel(modeloAlimentos);
         
         em.close();
         emf.close();
