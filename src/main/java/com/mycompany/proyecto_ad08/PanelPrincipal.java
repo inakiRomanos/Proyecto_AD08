@@ -155,6 +155,11 @@ public class PanelPrincipal extends javax.swing.JFrame {
         });
 
         botonAmadirAlimento.setText("Añadir");
+        botonAmadirAlimento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAmadirAlimentoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -264,7 +269,7 @@ public class PanelPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_botonBuscarComidaActionPerformed
 
     private void botonAnadirMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAnadirMenuActionPerformed
-        // TODO add your handling code here:
+        CrearMenu.ponerAlimento();
     }//GEN-LAST:event_botonAnadirMenuActionPerformed
 
     private void botonImprimirMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonImprimirMenuActionPerformed
@@ -282,6 +287,12 @@ public class PanelPrincipal extends javax.swing.JFrame {
     private void botonBuscarAlimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarAlimentoActionPerformed
          BuscarAlimentos.Buscar();
     }//GEN-LAST:event_botonBuscarAlimentoActionPerformed
+
+    private void botonAmadirAlimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAmadirAlimentoActionPerformed
+        InsertarAlimentos.insertarAli();
+        CargarTablaAlimentos.cargandoTabla();
+        
+    }//GEN-LAST:event_botonAmadirAlimentoActionPerformed
 
     /**
      * @param args the command line arguments
