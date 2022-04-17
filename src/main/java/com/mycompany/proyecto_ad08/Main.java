@@ -16,12 +16,14 @@ public class Main {
     public static void main(String[] args) {
         // Crear y cargar BD
         BDAlimentos.cargarBD();
+        
 
         //Abrir panel principal
         PanelPrincipal nuevo = new PanelPrincipal();
         nuevo.setVisible(true);
         CargarTablaAlimentos.cargandoTabla();
         CrearMenu.crearModelo();
+        BDComidas.cargarTabla();
     }
 
 }
