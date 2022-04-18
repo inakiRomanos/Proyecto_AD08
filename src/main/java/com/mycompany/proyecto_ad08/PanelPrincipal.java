@@ -4,6 +4,10 @@
  */
 package com.mycompany.proyecto_ad08;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author i_rom
@@ -122,6 +126,11 @@ public class PanelPrincipal extends javax.swing.JFrame {
         });
 
         botonAnadirComida.setText("Añadir");
+        botonAnadirComida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAnadirComidaActionPerformed(evt);
+            }
+        });
 
         botonAnadirMenu.setText("Añadir Alimento");
         botonAnadirMenu.addActionListener(new java.awt.event.ActionListener() {
@@ -294,6 +303,14 @@ public class PanelPrincipal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_botonAmadirAlimentoActionPerformed
 
+    private void botonAnadirComidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAnadirComidaActionPerformed
+        try {
+            AnadirComida.anadir();
+        } catch (SQLException ex) {
+            Logger.getLogger(PanelPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_botonAnadirComidaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -338,7 +355,7 @@ public class PanelPrincipal extends javax.swing.JFrame {
     public static javax.swing.JButton botonImprimirMenu;
     public static javax.swing.JSpinner caloriasAlimento_in;
     public static javax.swing.JTextField comidaComida_in;
-    private javax.swing.JTextField fechaComida_in;
+    public static javax.swing.JTextField fechaComida_in;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
