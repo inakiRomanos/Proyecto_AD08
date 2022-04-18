@@ -94,6 +94,11 @@ public class PanelPrincipal extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3"
             }
         ));
+        tablaComida.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaComidaMouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(tablaComida);
 
         jLabel1.setText("Comidas");
@@ -310,6 +315,10 @@ public class PanelPrincipal extends javax.swing.JFrame {
             Logger.getLogger(PanelPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_botonAnadirComidaActionPerformed
+
+    private void tablaComidaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaComidaMouseClicked
+        BDComidas.recargarMenu();
+    }//GEN-LAST:event_tablaComidaMouseClicked
 
     /**
      * @param args the command line arguments
