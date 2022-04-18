@@ -32,6 +32,15 @@ public class CrearMenu {
         Object[] fila = new Object[]{nombre, calorias};
         modeloMenu.addRow(fila);
         PanelPrincipal.tablaMenu.setModel(modeloMenu);
-
+    }
+    
+    public static void nuevoMenu(){
+    int filas = PanelPrincipal.tablaMenu.getRowCount();
+        for (int i = 0; i < filas; i++) {
+            CrearMenu.modeloMenu.removeRow(0);          
+        }
+}
+    public static void quitarAlimento(){
+         modeloMenu.removeRow(PanelPrincipal.tablaMenu.getSelectedRowCount());
     }
 }

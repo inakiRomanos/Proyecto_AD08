@@ -76,6 +76,43 @@ public class BDComidas {
 
         //Cargamos el array en el modelo
         PanelPrincipal.tablaComida.setModel(modeloComidas);
+    }
+    
+    public static void recargarMenu(){
+        //Extraemos fecha y comida
+        String fechaComida;
+        String comidaComida;       
+        fechaComida = (String) PanelPrincipal.tablaComida.getValueAt(PanelPrincipal.tablaComida.getSelectedRow(), 0);
+        comidaComida = (String) PanelPrincipal.tablaComida.getValueAt(PanelPrincipal.tablaComida.getSelectedRow(), 1);
+        
+        //Conectamos BBDD
+        con = getConnection();
+        
+        //Limpiamos tabla
+        int filas = PanelPrincipal.tablaMenu.getRowCount();
+        for (int i = 0; i < filas; i++) {
+            CrearMenu.modeloMenu.removeRow(0);          
+        }
+        
+        //Extraemos datos BDD
+        try {
+            Statement stmt = con.createStatement();
+
+            ResultSet rs = stmt.executeQuery("SELECT * from ALIMENTOS WHERE FECHA_AL ='" +fechaComida+"' AND COMIDA_AL='" +comidaComida+ "'");
+            while (rs.next()) {
+                String[] datos = {rs.getString("ALIMENTO"), rs.getString("CALORIAS")};
+                CrearMenu.modeloMenu.addRow(datos);
+            }
+
+            //Cerramos la conexión
+            con.close();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        
+        
 
     }
     }
