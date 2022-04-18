@@ -85,6 +85,9 @@ public class BDComidas {
         fechaComida = (String) PanelPrincipal.tablaComida.getValueAt(PanelPrincipal.tablaComida.getSelectedRow(), 0);
         comidaComida = (String) PanelPrincipal.tablaComida.getValueAt(PanelPrincipal.tablaComida.getSelectedRow(), 1);
         
+        PanelPrincipal.fechaComida_in.setText(fechaComida);
+        PanelPrincipal.comidaComida_in.setText(comidaComida);
+        
         //Conectamos BBDD
         con = getConnection();
         

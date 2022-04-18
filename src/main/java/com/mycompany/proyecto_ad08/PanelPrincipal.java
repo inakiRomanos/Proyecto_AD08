@@ -194,6 +194,11 @@ public class PanelPrincipal extends javax.swing.JFrame {
         });
 
         borrarComida.setText("Borrar");
+        borrarComida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                borrarComidaActionPerformed(evt);
+            }
+        });
 
         Borrar.setText("jButton2");
 
@@ -359,7 +364,7 @@ public class PanelPrincipal extends javax.swing.JFrame {
 
     private void botonAnadirComidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAnadirComidaActionPerformed
         try {
-            AnadirComida.anadir();
+            AnadirQuitarComida.anadir();
         } catch (SQLException ex) {
             Logger.getLogger(PanelPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -376,6 +381,14 @@ public class PanelPrincipal extends javax.swing.JFrame {
     private void borrarAlimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borrarAlimentoActionPerformed
         CrearMenu.quitarAlimento();
     }//GEN-LAST:event_borrarAlimentoActionPerformed
+
+    private void borrarComidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borrarComidaActionPerformed
+        try {
+            AnadirQuitarComida.quitar();
+        } catch (SQLException ex) {
+            Logger.getLogger(PanelPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_borrarComidaActionPerformed
 
     /**
      * @param args the command line arguments
