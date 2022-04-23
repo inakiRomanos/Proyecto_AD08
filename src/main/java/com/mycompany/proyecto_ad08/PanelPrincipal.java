@@ -52,7 +52,7 @@ public class PanelPrincipal extends javax.swing.JFrame {
         borrarAlimentos = new javax.swing.JButton();
         caloriasAlimento_in = new javax.swing.JSpinner();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        menuBorrarComida = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         menuAnadirComida = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
@@ -62,7 +62,7 @@ public class PanelPrincipal extends javax.swing.JFrame {
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
+        nuevoMenu = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -177,10 +177,10 @@ public class PanelPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jMenu1.setText("Comidas");
+        menuBorrarComida.setText("Comidas");
 
         jMenuItem1.setText("Buscar");
-        jMenu1.add(jMenuItem1);
+        menuBorrarComida.add(jMenuItem1);
 
         menuAnadirComida.setText("Añadir");
         menuAnadirComida.addActionListener(new java.awt.event.ActionListener() {
@@ -188,7 +188,7 @@ public class PanelPrincipal extends javax.swing.JFrame {
                 menuAnadirComidaActionPerformed(evt);
             }
         });
-        jMenu1.add(menuAnadirComida);
+        menuBorrarComida.add(menuAnadirComida);
 
         jMenuItem3.setText("Borrar");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
@@ -196,9 +196,9 @@ public class PanelPrincipal extends javax.swing.JFrame {
                 jMenuItem3ActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem3);
+        menuBorrarComida.add(jMenuItem3);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(menuBorrarComida);
 
         jMenu2.setText("Alimentos");
 
@@ -228,8 +228,13 @@ public class PanelPrincipal extends javax.swing.JFrame {
         jMenuItem7.setText("Imprimir");
         jMenu3.add(jMenuItem7);
 
-        jMenuItem8.setText("Nuevo Menú");
-        jMenu3.add(jMenuItem8);
+        nuevoMenu.setText("Nuevo Menú");
+        nuevoMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nuevoMenuActionPerformed(evt);
+            }
+        });
+        jMenu3.add(nuevoMenu);
 
         jMenuItem9.setText("Borrar Alimento");
         jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
@@ -404,6 +409,12 @@ public class PanelPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
+    private void nuevoMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevoMenuActionPerformed
+        CrearMenu.nuevoMenu();
+        tablaAlimentos.clearSelection();
+        tablaComida.clearSelection();
+    }//GEN-LAST:event_nuevoMenuActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -452,7 +463,6 @@ public class PanelPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
@@ -462,13 +472,14 @@ public class PanelPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     public static javax.swing.JMenuItem menuAnadirComida;
+    private javax.swing.JMenu menuBorrarComida;
     public static javax.swing.JTextField nombreAlimento_in;
+    private javax.swing.JMenuItem nuevoMenu;
     public static javax.swing.JButton nuevo_menu;
     public static javax.swing.JTable tablaAlimentos;
     public static javax.swing.JTable tablaComida;

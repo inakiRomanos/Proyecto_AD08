@@ -11,9 +11,9 @@ import javax.swing.JOptionPane;
  *
  * @author i_rom
  */
-public class InsertarAlimentos {
+public class InsertarQuitarAlimentos {
 
-    public InsertarAlimentos() {
+    public InsertarQuitarAlimentos() {
     }
 
     public static void insertarAli() {
@@ -21,7 +21,7 @@ public class InsertarAlimentos {
         if (PanelPrincipal.nombreAlimento_in.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "El campo NOMBRE es obligatorio");
         } else if (PanelPrincipal.caloriasAlimento_in.equals(0)) {
-            JOptionPane.showMessageDialog(null, "El campo NACIONALIDAD es obligatorio");
+            JOptionPane.showMessageDialog(null, "El campo CALORIAS es obligatorio");
         } else {
 
             String nombreNuevo = PanelPrincipal.nombreAlimento_in.getText();
@@ -39,7 +39,6 @@ public class InsertarAlimentos {
 
             } else {
 
-
                 Alimentos nueva = new Alimentos(nombreNuevo, caloriasNuevas);
 
                 em.getTransaction().begin();
@@ -52,6 +51,24 @@ public class InsertarAlimentos {
             }
         }
 
+    }
+
+    public static void QuitarAli() {
+        String alimentoSeleccionado = (String) CargarTablaAlimentos.modeloAlimentos.getValueAt(PanelPrincipal.tablaAlimentos.getSelectedRow(), 0);
+
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("objectdb:db/database.inakiRomanos");
+        EntityManager em = emf.createEntityManager();
+
+        Alimentos a = em.find(Alimentos.class, alimentoSeleccionado);
+
+        em.getTransaction().begin();
+        em.remove(a);
+        em.getTransaction().commit();
+
+        em.close();
+        emf.close();
+        
+        CargarTablaAlimentos.cargandoTabla();;
     }
 
 }

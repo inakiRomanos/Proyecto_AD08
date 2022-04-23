@@ -81,13 +81,11 @@ public class BDComidas {
     
     public static void recargarMenu(){
         //Extraemos fecha y comida
-        String fechaComida;
+        Date fechaComida;
         String comidaComida;       
-        fechaComida = (String) PanelPrincipal.tablaComida.getValueAt(PanelPrincipal.tablaComida.getSelectedRow(), 0);
+        fechaComida = (Date) PanelPrincipal.tablaComida.getValueAt(PanelPrincipal.tablaComida.getSelectedRow(), 0);
         comidaComida = (String) PanelPrincipal.tablaComida.getValueAt(PanelPrincipal.tablaComida.getSelectedRow(), 1);
         
-        PanelPrincipal.fechaComidaIn.setDateFormatString(fechaComida);
-        PanelPrincipal.comidaComida_in.setText(comidaComida);
         
         //Conectamos BBDD
         con = getConnection();
