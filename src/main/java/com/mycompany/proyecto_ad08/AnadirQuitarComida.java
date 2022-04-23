@@ -3,9 +3,7 @@ package com.mycompany.proyecto_ad08;
 import static com.mycompany.proyecto_ad08.BDComidas.con;
 import static com.mycompany.proyecto_ad08.BDComidas.getConnection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 
 /*
@@ -25,12 +23,6 @@ public class AnadirQuitarComida {
         int filas = PanelPrincipal.tablaMenu.getRowCount();
 
         con = getConnection();
-        PreparedStatement pstmt = null;
-        pstmt = con.prepareStatement("INSERT INTO COMIDAS (FECHA, COMIDA) VALUES (?,?)");
-
-        pstmt.setObject(1, PanelPrincipal.fechaComida_in.getText());
-        pstmt.setObject(2, PanelPrincipal.comidaComida_in.getText());
-        pstmt.execute();
 
         for (int i = 0; i < filas; i++) {
 
@@ -52,22 +44,17 @@ public class AnadirQuitarComida {
     public static void quitar() throws SQLException {
 
         con = getConnection();
-        PreparedStatement pstmt = null;
 
-        pstmt = con.prepareStatement("DELETE FROM COMIDAS WHERE FECHA=? AND COMIDA=?");
-
-        pstmt.setObject(1, PanelPrincipal.fechaComida_in);
-        pstmt.setObject(2, PanelPrincipal.comidaComida_in);
-        pstmt.execute();
         
          PreparedStatement pstmt2 = null;
-
+         
         pstmt2 = con.prepareStatement("DELETE FROM ALIMENTOS WHERE FECHA_AL=? AND COMIDA_AL=?");
 
-        pstmt2.setObject(1, PanelPrincipal.fechaComida_in);
-        pstmt2.setObject(2, PanelPrincipal.comidaComida_in);
-        pstmt2.execute();
+        pstmt2.setObject(1, PanelPrincipal.fechaComida_in.getText());
+        pstmt2.setObject(2, PanelPrincipal.comidaComida_in.getText());
+        pstmt2.executeUpdate();
         
+        BDComidas.cargarTabla();
         
         con.close();
         
