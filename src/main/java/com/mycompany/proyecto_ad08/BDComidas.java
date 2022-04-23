@@ -12,6 +12,7 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
+import java.sql.Date;
 
 /**
  *
@@ -63,7 +64,7 @@ public class BDComidas {
 
             ResultSet rs = stmt.executeQuery("SELECT DISTINCT FECHA, COMIDA from ALIMENTOS");
             while (rs.next()) {
-                String[] datos = {rs.getString("FECHA"), rs.getString("COMIDA"), "0"};
+                Object[] datos = {rs.getDate("FECHA"), rs.getString("COMIDA"), "0"};
                 modeloComidas.addRow(datos);
             }
 
@@ -85,7 +86,7 @@ public class BDComidas {
         fechaComida = (String) PanelPrincipal.tablaComida.getValueAt(PanelPrincipal.tablaComida.getSelectedRow(), 0);
         comidaComida = (String) PanelPrincipal.tablaComida.getValueAt(PanelPrincipal.tablaComida.getSelectedRow(), 1);
         
-        PanelPrincipal.fechaComida_in.setText(fechaComida);
+        PanelPrincipal.fechaComidaIn.setDateFormatString(fechaComida);
         PanelPrincipal.comidaComida_in.setText(comidaComida);
         
         //Conectamos BBDD
