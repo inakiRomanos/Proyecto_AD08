@@ -26,14 +26,14 @@ public class AnadirQuitarComida {
 
         for (int i = 0; i < filas; i++) {
 
-            PreparedStatement pstmt2 = null;
-            pstmt2 = con.prepareStatement("INSERT INTO ALIMENTOS (FECHA_AL,COMIDA_AL,ALIMENTO,CALORIAS) VALUES (?,?,?,?)");
+            PreparedStatement pstmt = null;
+            pstmt = con.prepareStatement("INSERT INTO ALIMENTOS (FECHA,COMIDA,ALIMENTO,CALORIAS) VALUES (?,?,?,?)");
 
-            pstmt2.setObject(1, PanelPrincipal.fechaComida_in.getText());
-            pstmt2.setObject(2, PanelPrincipal.comidaComida_in.getText());
-            pstmt2.setObject(3, PanelPrincipal.tablaMenu.getValueAt(i, 0));
-            pstmt2.setObject(4, PanelPrincipal.tablaMenu.getValueAt(i, 1));
-            pstmt2.execute();
+            pstmt.setObject(1, PanelPrincipal.fechaComida_in.getText());
+            pstmt.setObject(2, PanelPrincipal.comidaComida_in.getText());
+            pstmt.setObject(3, PanelPrincipal.tablaMenu.getValueAt(i, 0));
+            pstmt.setObject(4, PanelPrincipal.tablaMenu.getValueAt(i, 1));
+            pstmt.execute();
         }
 
         BDComidas.cargarTabla();
@@ -46,13 +46,13 @@ public class AnadirQuitarComida {
         con = getConnection();
 
         
-         PreparedStatement pstmt2 = null;
+         PreparedStatement pstmt = null;
          
-        pstmt2 = con.prepareStatement("DELETE FROM ALIMENTOS WHERE FECHA_AL=? AND COMIDA_AL=?");
+        pstmt = con.prepareStatement("DELETE FROM ALIMENTOS WHERE FECHA=? AND COMIDA=?");
 
-        pstmt2.setObject(1, PanelPrincipal.fechaComida_in.getText());
-        pstmt2.setObject(2, PanelPrincipal.comidaComida_in.getText());
-        pstmt2.executeUpdate();
+        pstmt.setObject(1, PanelPrincipal.fechaComida_in.getText());
+        pstmt.setObject(2, PanelPrincipal.comidaComida_in.getText());
+        pstmt.executeUpdate();
         
         BDComidas.cargarTabla();
         

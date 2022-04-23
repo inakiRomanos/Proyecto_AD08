@@ -58,10 +58,10 @@ public class BDComidas {
 
         try {
 
-           //Leemos la tabla vuelos de la BBDD y guardamos los datos en un array 
+           
             Statement stmt = con.createStatement();
 
-            ResultSet rs = stmt.executeQuery("SELECT * from COMIDAS");
+            ResultSet rs = stmt.executeQuery("SELECT DISTINCT FECHA, COMIDA from ALIMENTOS");
             while (rs.next()) {
                 String[] datos = {rs.getString("FECHA"), rs.getString("COMIDA"), "0"};
                 modeloComidas.addRow(datos);
@@ -101,7 +101,7 @@ public class BDComidas {
         try {
             Statement stmt = con.createStatement();
 
-            ResultSet rs = stmt.executeQuery("SELECT * from ALIMENTOS WHERE FECHA_AL ='" +fechaComida+"' AND COMIDA_AL='" +comidaComida+ "'");
+            ResultSet rs = stmt.executeQuery("SELECT * from ALIMENTOS WHERE FECHA ='" +fechaComida+"' AND COMIDA='" +comidaComida+ "'");
             while (rs.next()) {
                 String[] datos = {rs.getString("ALIMENTO"), rs.getString("CALORIAS")};
                 CrearMenu.modeloMenu.addRow(datos);
