@@ -50,11 +50,13 @@ public class AnadirQuitarComida {
          
         pstmt = con.prepareStatement("DELETE FROM ALIMENTOS WHERE FECHA=? AND COMIDA=?");
 
-        pstmt.setObject(1, PanelPrincipal.fechaComida_in.getText());
-        pstmt.setObject(2, PanelPrincipal.comidaComida_in.getText());
+        pstmt.setObject(1, (String) BDComidas.modeloComidas.getValueAt(PanelPrincipal.tablaComida.getSelectedRow(), 0));
+        pstmt.setObject(2, (String) BDComidas.modeloComidas.getValueAt(PanelPrincipal.tablaComida.getSelectedRow(), 1));
         pstmt.executeUpdate();
         
         BDComidas.cargarTabla();
+        CrearMenu.nuevoMenu();
+
         
         con.close();
         
