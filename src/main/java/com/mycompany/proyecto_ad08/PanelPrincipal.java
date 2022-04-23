@@ -56,7 +56,7 @@ public class PanelPrincipal extends javax.swing.JFrame {
         borrarAlimento = new javax.swing.JButton();
         nuevo_menu = new javax.swing.JButton();
         borrarComida = new javax.swing.JButton();
-        Borrar = new javax.swing.JButton();
+        borrarAlimentos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menu Diario");
@@ -200,7 +200,12 @@ public class PanelPrincipal extends javax.swing.JFrame {
             }
         });
 
-        Borrar.setText("jButton2");
+        borrarAlimentos.setText("Borrar");
+        borrarAlimentos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                borrarAlimentosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -264,7 +269,7 @@ public class PanelPrincipal extends javax.swing.JFrame {
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                 .addComponent(botonAmadirAlimento)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(Borrar)
+                                                .addComponent(borrarAlimentos)
                                                 .addGap(0, 0, Short.MAX_VALUE)))))
                                 .addContainerGap())))))
         );
@@ -284,37 +289,31 @@ public class PanelPrincipal extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel6)
                         .addComponent(nombreAlimento_in, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(fechaComida_in, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(botonAnadirMenu)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel7)
-                                    .addComponent(borrarAlimento)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(caloriasAlimento_in, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel7)
+                                .addComponent(borrarAlimento))
+                            .addComponent(caloriasAlimento_in, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(botonBuscarAlimento)
-                                    .addComponent(botonAmadirAlimento)
-                                    .addComponent(Borrar)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(botonImprimirMenu)
-                                    .addComponent(nuevo_menu)))))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(botonBuscarAlimento)
+                                .addComponent(botonAmadirAlimento)
+                                .addComponent(borrarAlimentos))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(botonImprimirMenu)
+                                .addComponent(nuevo_menu))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(4, 4, 4)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
                             .addComponent(comidaComida_in, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -357,7 +356,7 @@ public class PanelPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_botonBuscarAlimentoActionPerformed
 
     private void botonAmadirAlimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAmadirAlimentoActionPerformed
-        InsertarAlimentos.insertarAli();
+        InsertarQuitarAlimentos.insertarAli();
         CargarTablaAlimentos.cargandoTabla();
         
     }//GEN-LAST:event_botonAmadirAlimentoActionPerformed
@@ -389,6 +388,10 @@ public class PanelPrincipal extends javax.swing.JFrame {
             Logger.getLogger(PanelPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_borrarComidaActionPerformed
+
+    private void borrarAlimentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borrarAlimentosActionPerformed
+        InsertarQuitarAlimentos.QuitarAli();
+    }//GEN-LAST:event_borrarAlimentosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -426,8 +429,8 @@ public class PanelPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Borrar;
     private javax.swing.JButton borrarAlimento;
+    public static javax.swing.JButton borrarAlimentos;
     private javax.swing.JButton borrarComida;
     private javax.swing.JButton botonAmadirAlimento;
     public static javax.swing.JButton botonAnadirComida;
