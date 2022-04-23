@@ -7,6 +7,7 @@ package com.mycompany.proyecto_ad08;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -39,12 +40,6 @@ public class PanelPrincipal extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        fechaComida_in = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        comidaComida_in = new javax.swing.JTextField();
-        botonBuscarComida = new javax.swing.JButton();
-        botonAnadirComida = new javax.swing.JButton();
         botonAnadirMenu = new javax.swing.JButton();
         botonImprimirMenu = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
@@ -52,11 +47,23 @@ public class PanelPrincipal extends javax.swing.JFrame {
         nombreAlimento_in = new javax.swing.JTextField();
         botonBuscarAlimento = new javax.swing.JButton();
         botonAmadirAlimento = new javax.swing.JButton();
-        caloriasAlimento_in = new javax.swing.JSpinner();
         borrarAlimento = new javax.swing.JButton();
         nuevo_menu = new javax.swing.JButton();
-        borrarComida = new javax.swing.JButton();
         borrarAlimentos = new javax.swing.JButton();
+        caloriasAlimento_in = new javax.swing.JSpinner();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        menuAnadirComida = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        jMenuItem7 = new javax.swing.JMenuItem();
+        jMenuItem8 = new javax.swing.JMenuItem();
+        jMenuItem9 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menu Diario");
@@ -111,36 +118,6 @@ public class PanelPrincipal extends javax.swing.JFrame {
 
         jLabel3.setText("Alimentos");
 
-        jLabel4.setText("Fecha");
-
-        fechaComida_in.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fechaComida_inActionPerformed(evt);
-            }
-        });
-
-        jLabel5.setText("Comida");
-
-        comidaComida_in.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comidaComida_inActionPerformed(evt);
-            }
-        });
-
-        botonBuscarComida.setText("Buscar");
-        botonBuscarComida.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonBuscarComidaActionPerformed(evt);
-            }
-        });
-
-        botonAnadirComida.setText("Añadir");
-        botonAnadirComida.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonAnadirComidaActionPerformed(evt);
-            }
-        });
-
         botonAnadirMenu.setText("Añadir Alimento");
         botonAnadirMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -193,13 +170,6 @@ public class PanelPrincipal extends javax.swing.JFrame {
             }
         });
 
-        borrarComida.setText("Borrar");
-        borrarComida.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                borrarComidaActionPerformed(evt);
-            }
-        });
-
         borrarAlimentos.setText("Borrar");
         borrarAlimentos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -207,34 +177,81 @@ public class PanelPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jMenu1.setText("Comidas");
+
+        jMenuItem1.setText("Buscar");
+        jMenu1.add(jMenuItem1);
+
+        menuAnadirComida.setText("Añadir");
+        menuAnadirComida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuAnadirComidaActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menuAnadirComida);
+
+        jMenuItem3.setText("Borrar");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem3);
+
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Alimentos");
+
+        jMenuItem4.setText("Buscar");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem4);
+
+        jMenuItem5.setText("Añadir");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem5);
+
+        jMenuItem6.setText("Borrar");
+        jMenu2.add(jMenuItem6);
+
+        jMenuBar1.add(jMenu2);
+
+        jMenu3.setText("Menú");
+
+        jMenuItem7.setText("Imprimir");
+        jMenu3.add(jMenuItem7);
+
+        jMenuItem8.setText("Nuevo Menú");
+        jMenu3.add(jMenuItem8);
+
+        jMenuItem9.setText("Borrar Alimento");
+        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem9ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem9);
+
+        jMenuBar1.add(jMenu3);
+
+        setJMenuBar(jMenuBar1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(botonBuscarComida)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(botonAnadirComida)
-                                .addGap(18, 18, 18)
-                                .addComponent(borrarComida)))
-                        .addGap(547, 605, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(fechaComida_in, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(95, 95, 95))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(comidaComida_in, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(125, 125, 125)
@@ -252,33 +269,40 @@ public class PanelPrincipal extends javax.swing.JFrame {
                                         .addComponent(nuevo_menu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGap(18, 18, 18)
                                         .addComponent(botonImprimirMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel6)
                                         .addGap(18, 18, 18)
                                         .addComponent(nombreAlimento_in))
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 70, Short.MAX_VALUE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel7)
-                                        .addGap(18, 18, 18)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(caloriasAlimento_in)
                                             .addGroup(layout.createSequentialGroup()
+                                                .addGap(18, 18, 18)
                                                 .addComponent(botonBuscarAlimento)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                 .addComponent(botonAmadirAlimento)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(borrarAlimentos)
-                                                .addGap(0, 0, Short.MAX_VALUE)))))
-                                .addContainerGap())))))
+                                                .addComponent(borrarAlimentos))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(15, 15, 15)
+                                                .addComponent(caloriasAlimento_in)))))
+                                .addContainerGap())))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
                     .addComponent(jLabel2)
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -287,53 +311,29 @@ public class PanelPrincipal extends javax.swing.JFrame {
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(nombreAlimento_in, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonAnadirMenu))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(borrarAlimento)
+                    .addComponent(caloriasAlimento_in, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(13, 13, 13)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel6)
-                        .addComponent(nombreAlimento_in, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(fechaComida_in, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(botonAnadirMenu)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel7)
-                                .addComponent(borrarAlimento))
-                            .addComponent(caloriasAlimento_in, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(botonBuscarAlimento)
-                                .addComponent(botonAmadirAlimento)
-                                .addComponent(borrarAlimentos))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(botonImprimirMenu)
-                                .addComponent(nuevo_menu))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(comidaComida_in, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(botonBuscarComida)
-                            .addComponent(botonAnadirComida)
-                            .addComponent(borrarComida))))
-                .addContainerGap(19, Short.MAX_VALUE))
+                        .addComponent(botonBuscarAlimento)
+                        .addComponent(botonAmadirAlimento)
+                        .addComponent(borrarAlimentos))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(botonImprimirMenu)
+                        .addComponent(nuevo_menu)))
+                .addContainerGap(80, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void fechaComida_inActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fechaComida_inActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_fechaComida_inActionPerformed
-
-    private void botonBuscarComidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarComidaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_botonBuscarComidaActionPerformed
 
     private void botonAnadirMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAnadirMenuActionPerformed
         CrearMenu.ponerAlimento();
@@ -347,27 +347,15 @@ public class PanelPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_nombreAlimento_inActionPerformed
 
-    private void comidaComida_inActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comidaComida_inActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_comidaComida_inActionPerformed
-
     private void botonBuscarAlimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarAlimentoActionPerformed
-         BuscarAlimentos.Buscar();
+        BuscarAlimentos.Buscar();
     }//GEN-LAST:event_botonBuscarAlimentoActionPerformed
 
     private void botonAmadirAlimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAmadirAlimentoActionPerformed
         InsertarQuitarAlimentos.insertarAli();
         CargarTablaAlimentos.cargandoTabla();
-        
-    }//GEN-LAST:event_botonAmadirAlimentoActionPerformed
 
-    private void botonAnadirComidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAnadirComidaActionPerformed
-        try {
-            AnadirQuitarComida.anadir();
-        } catch (SQLException ex) {
-            Logger.getLogger(PanelPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_botonAnadirComidaActionPerformed
+    }//GEN-LAST:event_botonAmadirAlimentoActionPerformed
 
     private void tablaComidaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaComidaMouseClicked
         BDComidas.recargarMenu();
@@ -381,17 +369,40 @@ public class PanelPrincipal extends javax.swing.JFrame {
         CrearMenu.quitarAlimento();
     }//GEN-LAST:event_borrarAlimentoActionPerformed
 
-    private void borrarComidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borrarComidaActionPerformed
+    private void borrarAlimentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borrarAlimentosActionPerformed
+        InsertarQuitarAlimentos.QuitarAli();
+    }//GEN-LAST:event_borrarAlimentosActionPerformed
+
+    private void menuAnadirComidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAnadirComidaActionPerformed
+        PanelAnadirComida nuevo = new PanelAnadirComida();
+        nuevo.setVisible(true);
+    }//GEN-LAST:event_menuAnadirComidaActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem9ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+       int selecionadas = tablaComida.getSelectedRowCount();
+        if(selecionadas > 0){
         try {
             AnadirQuitarComida.quitar();
         } catch (SQLException ex) {
             Logger.getLogger(PanelPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_borrarComidaActionPerformed
-
-    private void borrarAlimentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borrarAlimentosActionPerformed
-        InsertarQuitarAlimentos.QuitarAli();
-    }//GEN-LAST:event_borrarAlimentosActionPerformed
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Por favor seleccione una comida");
+        }
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -431,26 +442,32 @@ public class PanelPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton borrarAlimento;
     public static javax.swing.JButton borrarAlimentos;
-    private javax.swing.JButton borrarComida;
     private javax.swing.JButton botonAmadirAlimento;
-    public static javax.swing.JButton botonAnadirComida;
     public static javax.swing.JButton botonAnadirMenu;
     private javax.swing.JButton botonBuscarAlimento;
-    public static javax.swing.JButton botonBuscarComida;
     public static javax.swing.JButton botonImprimirMenu;
     public static javax.swing.JSpinner caloriasAlimento_in;
-    public static javax.swing.JTextField comidaComida_in;
-    public static javax.swing.JTextField fechaComida_in;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    public static javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    public static javax.swing.JMenuItem menuAnadirComida;
     public static javax.swing.JTextField nombreAlimento_in;
     public static javax.swing.JButton nuevo_menu;
     public static javax.swing.JTable tablaAlimentos;
