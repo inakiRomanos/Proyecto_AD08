@@ -22,9 +22,10 @@ public class BuscarAlimentos {
 
     public static void Buscar() {
 
-        String nombreBuscar = PanelPrincipal.nombreAlimento_in.getText();
-        int caloriasBuscar = (int) PanelPrincipal.caloriasAlimento_in.getValue();
-
+        String nombreBuscar = PanelBuscarAlimento.nombreBuscarAlimento.getText();
+        int caloriasMin = (int) PanelBuscarAlimento.caloriaMinBuscarAlimento.getValue();
+        int caloriasMax = (int) PanelBuscarAlimento.caloriaMaxBuscarAlimento.getValue();
+  
 
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("objectdb:db/database.inakiRomanos");
         EntityManager em = emf.createEntityManager();
@@ -34,21 +35,20 @@ public class BuscarAlimentos {
         Root<Alimentos> alimentos = query.from(Alimentos.class);
         //Especifica qué se va a buscar (SELECT)
 
-        if (nombreBuscar.isEmpty() & !PanelPrincipal.caloriasAlimento_in.getValue().equals(0)) {
-            query.select(alimentos).distinct(true).where(cb.equal(alimentos.get("calorias"), caloriasBuscar));
+        if (nombreBuscar.isEmpty() & !PanelBuscarAlimento.caloriaMaxBuscarAlimento.getValue().equals(0)) {
+            query.select(alimentos).distinct(true).where(cb.between(alimentos.get("calorias"), caloriasMin, caloriasMax));
 
         } else if (PanelPrincipal.caloriasAlimento_in.getValue().equals(0) & !nombreBuscar.isEmpty()) {
             query.select(alimentos).distinct(true).where(cb.equal(alimentos.get("nombre"), nombreBuscar));
 
-        } else if(!PanelPrincipal.caloriasAlimento_in.getValue().equals(0) & !nombreBuscar.isEmpty()) {
+        } else if(!PanelBuscarAlimento.caloriaMaxBuscarAlimento.getValue().equals(0) & !nombreBuscar.isEmpty()) {
             Predicate[] predicates = new Predicate[2];
             predicates[0] = cb.equal(alimentos.get("nombre"), nombreBuscar);
-            predicates[1] = cb.equal(alimentos.get("calorias"), caloriasBuscar);
+            predicates[1] = cb.between(alimentos.get("calorias"), caloriasMin, caloriasMax);
             query.select(alimentos).distinct(true).where(predicates);
-        } else if (PanelPrincipal.caloriasAlimento_in.getValue().equals(0) & nombreBuscar.isEmpty()){
+        } else if (PanelBuscarAlimento.caloriaMaxBuscarAlimento.getValue().equals(0) & nombreBuscar.isEmpty()){
             query.select(alimentos);
         }
-
         List<Alimentos> results = em.createQuery(query).getResultList();
         System.out.println(results);
 
