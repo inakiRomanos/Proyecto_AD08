@@ -9,5 +9,12 @@ package com.mycompany.proyecto_ad08;
  * @author i_rom
  */
 public class BuscarComidas {
+
+    public BuscarComidas() {
+    }
+    
+    static public void buscar(){
+        
+    }
     
 }

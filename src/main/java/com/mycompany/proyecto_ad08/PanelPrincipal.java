@@ -46,6 +46,7 @@ public class PanelPrincipal extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         menuAnadirComida = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
+        actualizarMenuComida = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         menuBucarAlimento = new javax.swing.JMenuItem();
         anadirAlimentosMenu = new javax.swing.JMenuItem();
@@ -143,6 +144,14 @@ public class PanelPrincipal extends javax.swing.JFrame {
             }
         });
         menuBorrarComida.add(jMenuItem3);
+
+        actualizarMenuComida.setText("Actualizar");
+        actualizarMenuComida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actualizarMenuComidaActionPerformed(evt);
+            }
+        });
+        menuBorrarComida.add(actualizarMenuComida);
 
         jMenuBar1.add(menuBorrarComida);
 
@@ -318,6 +327,14 @@ public class PanelPrincipal extends javax.swing.JFrame {
         nuevo.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+    private void actualizarMenuComidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarMenuComidaActionPerformed
+        try {
+            AnadirQuitarComida.actualizarComida();
+        } catch (SQLException ex) {
+            Logger.getLogger(PanelPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_actualizarMenuComidaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -354,6 +371,7 @@ public class PanelPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public static javax.swing.JMenuItem actualizarMenuComida;
     public static javax.swing.JMenuItem anadirAlimentosMenu;
     private javax.swing.JMenuItem borrarMenuAlimentos;
     private javax.swing.JMenuItem borraralimentoMenu;
