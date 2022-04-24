@@ -44,6 +44,12 @@ public class PanelBuscarComida extends javax.swing.JFrame {
         jLabel2.setText("Comida");
 
         comidaBuscarComidaIn.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Desayunar", "Comida", "Cena" }));
+        comidaBuscarComidaIn.setSelectedIndex(-1);
+        comidaBuscarComidaIn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comidaBuscarComidaInActionPerformed(evt);
+            }
+        });
 
         aceptarBuscarComida.setText("Aceptar");
         aceptarBuscarComida.addActionListener(new java.awt.event.ActionListener() {
@@ -102,13 +108,21 @@ public class PanelBuscarComida extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void aceptarBuscarComidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarBuscarComidaActionPerformed
-        BuscarComidas.buscar();
+        try {
+            BuscarComidas.buscar();
+        } catch (SQLException ex) {
+            Logger.getLogger(PanelBuscarComida.class.getName()).log(Level.SEVERE, null, ex);
+        }
         dispose();          
     }//GEN-LAST:event_aceptarBuscarComidaActionPerformed
 
     private void cancelarBuscarComidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarBuscarComidaActionPerformed
         dispose();
     }//GEN-LAST:event_cancelarBuscarComidaActionPerformed
+
+    private void comidaBuscarComidaInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comidaBuscarComidaInActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comidaBuscarComidaInActionPerformed
 
     /**
      * @param args the command line arguments
