@@ -121,6 +121,11 @@ public class PanelPrincipal extends javax.swing.JFrame {
         menuBorrarComida.setText("Comidas");
 
         jMenuItem1.setText("Buscar");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         menuBorrarComida.add(jMenuItem1);
 
         menuAnadirComida.setText("Añadir");
@@ -307,6 +312,11 @@ public class PanelPrincipal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Por favor seleccione una comida");
         }
     }//GEN-LAST:event_borrarMenuAlimentosActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        PanelBuscarComida nuevo = new PanelBuscarComida();
+        nuevo.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
