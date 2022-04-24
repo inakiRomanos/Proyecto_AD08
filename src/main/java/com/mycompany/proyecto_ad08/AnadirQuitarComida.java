@@ -67,4 +67,36 @@ public class AnadirQuitarComida {
         }
 
     }
+    
+    public static void actualizarComida() throws SQLException{
+        
+        con = getConnection();
+        
+         PreparedStatement pstmt = null;
+         
+        pstmt = con.prepareStatement("DELETE FROM ALIMENTOS WHERE FECHA=? AND COMIDA=?");
+
+        pstmt.setObject(1, (Date) BDComidas.modeloComidas.getValueAt(PanelPrincipal.tablaComida.getSelectedRow(), 0));
+        pstmt.setObject(2, (String) BDComidas.modeloComidas.getValueAt(PanelPrincipal.tablaComida.getSelectedRow(), 1));
+        pstmt.executeUpdate();
+        
+        int filas = PanelPrincipal.tablaMenu.getRowCount();
+        
+        for (int i = 0; i < filas; i++) {
+
+            PreparedStatement pstmt2 = null;
+            pstmt2 = con.prepareStatement("INSERT INTO ALIMENTOS (FECHA,COMIDA,ALIMENTO,CALORIAS) VALUES (?,?,?,?)");
+
+            pstmt2.setObject(1, (Date) PanelPrincipal.tablaComida.getValueAt(i, 0));
+            pstmt2.setObject(2, PanelPrincipal.tablaComida.getValueAt(i, 1).toString());
+            pstmt2.setObject(3, PanelPrincipal.tablaMenu.getValueAt(i, 0));
+            pstmt2.setObject(4, PanelPrincipal.tablaMenu.getValueAt(i, 1));
+            pstmt2.execute();
+        }
+
+        BDComidas.cargarTabla();
+
+        con.close();
+        
+    }
 }
