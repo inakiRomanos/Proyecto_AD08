@@ -44,59 +44,73 @@ public class AnadirQuitarComida {
     }
 
     public static void quitar() throws SQLException {
-        
+
         int reply = JOptionPane.showConfirmDialog(null, "¿Esta seguro que quiere eliminar la comida seleccionada?", "Confirmar", JOptionPane.YES_NO_OPTION);
         if (reply == JOptionPane.YES_OPTION) {
 
-        con = getConnection();
-        
-         PreparedStatement pstmt = null;
-         
-        pstmt = con.prepareStatement("DELETE FROM ALIMENTOS WHERE FECHA=? AND COMIDA=?");
+            con = getConnection();
 
-        pstmt.setObject(1, (Date) BDComidas.modeloComidas.getValueAt(PanelPrincipal.tablaComida.getSelectedRow(), 0));
-        pstmt.setObject(2, (String) BDComidas.modeloComidas.getValueAt(PanelPrincipal.tablaComida.getSelectedRow(), 1));
-        pstmt.executeUpdate();
-        
-        JOptionPane.showMessageDialog(null, "La comida seleccionada ha sido borrado");
-        
-        BDComidas.cargarTabla();
-        CrearMenu.nuevoMenu();
+            PreparedStatement pstmt = null;
 
-        con.close();
+            pstmt = con.prepareStatement("DELETE FROM ALIMENTOS WHERE FECHA=? AND COMIDA=?");
+
+            pstmt.setObject(1, (Date) BDComidas.modeloComidas.getValueAt(PanelPrincipal.tablaComida.getSelectedRow(), 0));
+            pstmt.setObject(2, (String) BDComidas.modeloComidas.getValueAt(PanelPrincipal.tablaComida.getSelectedRow(), 1));
+            pstmt.executeUpdate();
+
+            JOptionPane.showMessageDialog(null, "La comida seleccionada ha sido borrado");
+
+            BDComidas.cargarTabla();
+            CrearMenu.nuevoMenu();
+
+            con.close();
         }
 
     }
-    
-    public static void actualizarComida() throws SQLException{
-        
+
+    static public void borrarActualizar() throws SQLException {
+
         con = getConnection();
-        
-         PreparedStatement pstmt = null;
-         
+
+        PreparedStatement pstmt = null;
+
         pstmt = con.prepareStatement("DELETE FROM ALIMENTOS WHERE FECHA=? AND COMIDA=?");
 
         pstmt.setObject(1, (Date) BDComidas.modeloComidas.getValueAt(PanelPrincipal.tablaComida.getSelectedRow(), 0));
         pstmt.setObject(2, (String) BDComidas.modeloComidas.getValueAt(PanelPrincipal.tablaComida.getSelectedRow(), 1));
         pstmt.executeUpdate();
-        
+
+        con.close();
+
+    }
+
+    public static void anadirActualizar() throws SQLException {
+
+        con = getConnection();
+
         int filas = PanelPrincipal.tablaMenu.getRowCount();
-        
+
         for (int i = 0; i < filas; i++) {
 
-            PreparedStatement pstmt2 = null;
-            pstmt2 = con.prepareStatement("INSERT INTO ALIMENTOS (FECHA,COMIDA,ALIMENTO,CALORIAS) VALUES (?,?,?,?)");
+            PreparedStatement pstmt = null;
+            pstmt = con.prepareStatement("INSERT INTO ALIMENTOS (FECHA,COMIDA,ALIMENTO,CALORIAS) VALUES (?,?,?,?)");
 
-            pstmt2.setObject(1, (Date) PanelPrincipal.tablaComida.getValueAt(i, 0));
-            pstmt2.setObject(2, PanelPrincipal.tablaComida.getValueAt(i, 1).toString());
-            pstmt2.setObject(3, PanelPrincipal.tablaMenu.getValueAt(i, 0));
-            pstmt2.setObject(4, PanelPrincipal.tablaMenu.getValueAt(i, 1));
-            pstmt2.execute();
+            pstmt.setObject(1, (Date) BDComidas.modeloComidas.getValueAt(PanelPrincipal.tablaComida.getSelectedRow(), 0));
+            pstmt.setObject(2, (String) BDComidas.modeloComidas.getValueAt(PanelPrincipal.tablaComida.getSelectedRow(), 1));
+            pstmt.setObject(3, PanelPrincipal.tablaMenu.getValueAt(i, 0));
+            pstmt.setObject(4, PanelPrincipal.tablaMenu.getValueAt(i, 1));
+            pstmt.execute();
         }
 
-        BDComidas.cargarTabla();
-
         con.close();
-        
+
     }
+
+    public static void actualizarComida() throws SQLException {
+
+        borrarActualizar();
+        anadirActualizar();
+
+    }
+
 }
