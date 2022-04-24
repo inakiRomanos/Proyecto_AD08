@@ -38,7 +38,7 @@ public class BuscarAlimentos {
         if (nombreBuscar.isEmpty() & !PanelBuscarAlimento.caloriaMaxBuscarAlimento.getValue().equals(0)) {
             query.select(alimentos).distinct(true).where(cb.between(alimentos.get("calorias"), caloriasMin, caloriasMax));
 
-        } else if (PanelPrincipal.caloriasAlimento_in.getValue().equals(0) & !nombreBuscar.isEmpty()) {
+        } else if (PanelBuscarAlimento.caloriaMaxBuscarAlimento.getValue().equals(0) & !nombreBuscar.isEmpty()) {
             query.select(alimentos).distinct(true).where(cb.equal(alimentos.get("nombre"), nombreBuscar));
 
         } else if(!PanelBuscarAlimento.caloriaMaxBuscarAlimento.getValue().equals(0) & !nombreBuscar.isEmpty()) {

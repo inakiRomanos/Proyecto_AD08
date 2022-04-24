@@ -18,21 +18,22 @@ public class InsertarQuitarAlimentos {
 
     public static void insertarAli() {
 
-        if (PanelPrincipal.nombreAlimento_in.getText().isEmpty()) {
+        if (PanelAnadirAlimento.nombreAnadirAlimentoIn.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "El campo NOMBRE es obligatorio");
-        } else if (PanelPrincipal.caloriasAlimento_in.equals(0)) {
+        } else if (PanelAnadirAlimento.caloriasAnadirAlimentoIn.equals(0)) {
             JOptionPane.showMessageDialog(null, "El campo CALORIAS es obligatorio");
         } else {
 
-            String nombreNuevo = PanelPrincipal.nombreAlimento_in.getText();
-            int caloriasNuevas = (int) PanelPrincipal.caloriasAlimento_in.getValue();
+            String nombreNuevo = PanelAnadirAlimento.nombreAnadirAlimentoIn.getText();
+            int caloriasNuevas = (int) PanelAnadirAlimento.caloriasAnadirAlimentoIn.getValue();
 
             EntityManagerFactory emf = Persistence.createEntityManagerFactory("objectdb:db/database.inakiRomanos");
             EntityManager em = emf.createEntityManager();
 
-            TypedQuery<Alimentos> querybis = em.createQuery("SELECT d FROM Alimentos d WHERE d.nombre = '" + PanelPrincipal.nombreAlimento_in.getText().toUpperCase() + "'", Alimentos.class);
+            TypedQuery<Alimentos> querybis = em.createQuery("SELECT d FROM Alimentos d WHERE d.nombre = '" + PanelAnadirAlimento.nombreAnadirAlimentoIn.getText().toUpperCase() + "'", Alimentos.class);
             List<Alimentos> comprobarNombre = querybis.getResultList();
             System.out.println(comprobarNombre);
+
 
             if (!comprobarNombre.isEmpty()) {
                 JOptionPane.showMessageDialog(null, "El alimento introducido ya existe");

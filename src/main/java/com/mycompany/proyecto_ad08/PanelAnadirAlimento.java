@@ -98,7 +98,7 @@ public class PanelAnadirAlimento extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void aceptarAnadirAlimentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarAnadirAlimentosActionPerformed
-        InsertarAlimentos.insertarAli();
+        InsertarQuitarAlimentos.insertarAli();
         CargarTablaAlimentos.cargandoTabla();
         dispose();
     }//GEN-LAST:event_aceptarAnadirAlimentosActionPerformed
