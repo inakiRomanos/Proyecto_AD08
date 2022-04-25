@@ -8,9 +8,11 @@ import static com.mycompany.proyecto_ad08.BDComidas.con;
 import static com.mycompany.proyecto_ad08.BDComidas.getConnection;
 import static com.mycompany.proyecto_ad08.BDComidas.modeloComidas;
 import java.sql.Date;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -31,15 +33,19 @@ public class BuscarComidas {
         modeloBuscarComidas.addColumn("COMIDA");
         modeloBuscarComidas.addColumn("CALORIAS");
 
-        String fechaSeleccionada = PanelBuscarComida.fechaBuscarComidaIn.getName();
-        String comidaSeleccionada = PanelBuscarComida.comidaBuscarComidaIn.toString();
+        java.util.Date fecha = PanelBuscarComida.fechaBuscarComidaIn.getDate();
 
-        if (!fechaSeleccionada.isEmpty() & comidaSeleccionada.isEmpty()) {
+        if (fecha != null & PanelBuscarComida.comidaBuscarComidaIn.getSelectedItem() == null) {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            String fechaSeleccionada = sdf.format(fecha);
+
             con = getConnection();
 
-            Statement stmt = con.createStatement();
+            PreparedStatement pstmt = con.prepareStatement("SELECT DISTINCT FECHA, COMIDA from ALIMENTOS WHERE FECHA = ? ");
+            pstmt.setString(1, fechaSeleccionada);
 
-            ResultSet rs = stmt.executeQuery("SELECT DISTINCT FECHA, COMIDA from ALIMENTOS WHERE FECHA = " + fechaSeleccionada);
+            ResultSet rs = pstmt.executeQuery();
+
             while (rs.next()) {
                 Object[] datos = {rs.getDate("FECHA"), rs.getString("COMIDA"), "0"};
                 modeloBuscarComidas.addRow(datos);
@@ -47,12 +53,17 @@ public class BuscarComidas {
 
             //Cerramos la conexión
             con.close();
-        } else if (fechaSeleccionada.isEmpty() & !comidaSeleccionada.isEmpty()) {
+
+        }
+
+        if (fecha == null & PanelBuscarComida.comidaBuscarComidaIn.getSelectedItem() != null){
             con = getConnection();
 
-            Statement stmt = con.createStatement();
+            PreparedStatement pstmt = con.prepareStatement("SELECT DISTINCT FECHA, COMIDA from ALIMENTOS WHERE COMIDA = ? ");
+            pstmt.setString(1, PanelBuscarComida.comidaBuscarComidaIn.getSelectedItem().toString());
 
-            ResultSet rs = stmt.executeQuery("SELECT DISTINCT FECHA, COMIDA from ALIMENTOS WHERE FECHA = " + comidaSeleccionada);
+            ResultSet rs = pstmt.executeQuery();
+
             while (rs.next()) {
                 Object[] datos = {rs.getDate("FECHA"), rs.getString("COMIDA"), "0"};
                 modeloBuscarComidas.addRow(datos);
