@@ -291,19 +291,20 @@ public class PanelPrincipal extends javax.swing.JFrame {
             anadirComida.setSelectedIndex(2);
         }
 
-        /*anadirComida.setEnabled(false);
+        anadirComida.setEnabled(false);
 
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-        String fechaSeleccionada = sdf.format((Date) BDComidas.modeloComidas.getValueAt(PanelPrincipal.tablaComida.getSelectedRow(), 0));
-        fechaAndirComida.setDateFormatString(fechaSeleccionada);
+        //SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        //String fechaSeleccionada = sdf.format((Date) BDComidas.modeloComidas.getValueAt(PanelPrincipal.tablaComida.getSelectedRow(), 0));
+        fechaAndirComida.setDate((Date) BDComidas.modeloComidas.getValueAt(PanelPrincipal.tablaComida.getSelectedRow(), 0));
+        fechaAndirComida.setEnabled(false);
 
         int subtotal = 0;
         for (int i = 0; i < tablaMenu.getRowCount(); i++) {
-            subtotal = subtotal + (int) tablaMenu.getValueAt(i, 1);
+            subtotal = subtotal + (int)tablaMenu.getValueAt(i, 1);
         }
         
         String total = String.valueOf(subtotal);
-        sumatorioCalorias.setText(total);*/
+        sumatorioCalorias.setText(total);
     }//GEN-LAST:event_tablaComidaMouseClicked
 
     private void buscarComidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarComidaActionPerformed

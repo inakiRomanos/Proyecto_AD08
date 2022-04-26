@@ -53,8 +53,7 @@ public class InsertarQuitarAlimentos {
                 }
 
             }
-        }
-    }
+        
     
 
     public static void QuitarAli() {

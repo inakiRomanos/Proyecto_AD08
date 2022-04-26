@@ -102,7 +102,7 @@ public class BDComidas {
 
             ResultSet rs = stmt.executeQuery("SELECT * from ALIMENTOS WHERE FECHA ='" +fechaComida+"' AND COMIDA='" +comidaComida+ "'");
             while (rs.next()) {
-                String[] datos = {rs.getString("ALIMENTO"), rs.getString("CALORIAS")};
+                Object[] datos = {rs.getString("ALIMENTO"), rs.getInt("CALORIAS")};
                 CrearMenu.modeloMenu.addRow(datos);
             }
 
