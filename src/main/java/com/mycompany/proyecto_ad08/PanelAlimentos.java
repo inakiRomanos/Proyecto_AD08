@@ -32,7 +32,7 @@ public class PanelAlimentos extends javax.swing.JFrame {
         anadirMenu = new javax.swing.JButton();
         alimentoBuscar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         tablaAlimentos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

@@ -4,7 +4,9 @@
  */
 package com.mycompany.proyecto_ad08;
 
+import java.sql.Date;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -31,6 +33,10 @@ public class PanelPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPopupMenuAlimentos = new javax.swing.JPopupMenu();
+        borrarAlimento = new javax.swing.JMenuItem();
+        PopupMenuComidas = new javax.swing.JPopupMenu();
+        borrarComida = new javax.swing.JMenuItem();
         jScrollPane2 = new javax.swing.JScrollPane();
         tablaMenu = new javax.swing.JTable();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -54,6 +60,22 @@ public class PanelPrincipal extends javax.swing.JFrame {
         actualizarMenu = new javax.swing.JToggleButton();
         alimentos = new javax.swing.JToggleButton();
 
+        borrarAlimento.setText("Borrar");
+        borrarAlimento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                borrarAlimentoActionPerformed(evt);
+            }
+        });
+        jPopupMenuAlimentos.add(borrarAlimento);
+
+        borrarComida.setText("Borrar");
+        borrarComida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                borrarComidaActionPerformed(evt);
+            }
+        });
+        PopupMenuComidas.add(borrarComida);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menu Diario");
 
@@ -68,6 +90,7 @@ public class PanelPrincipal extends javax.swing.JFrame {
                 "Title 1", "Title 2"
             }
         ));
+        tablaMenu.setComponentPopupMenu(jPopupMenuAlimentos);
         jScrollPane2.setViewportView(tablaMenu);
 
         tablaComida.setModel(new javax.swing.table.DefaultTableModel(
@@ -81,6 +104,7 @@ public class PanelPrincipal extends javax.swing.JFrame {
                 "Title 1", "Title 2"
             }
         ));
+        tablaComida.setComponentPopupMenu(PopupMenuComidas);
         tablaComida.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tablaComidaMouseClicked(evt);
@@ -112,18 +136,35 @@ public class PanelPrincipal extends javax.swing.JFrame {
 
         jLabel6.setText("Comida");
 
-        anadirComida.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Comida", "Cena", "Desayuno" }));
+        anadirComida.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Desayuno", "Comida", "Cena" }));
         anadirComida.setSelectedIndex(-1);
 
         jLabel7.setText("Calorias");
 
+        sumatorioCalorias.setEnabled(false);
+
         nuevoMenu.setText("Nuevo Menú");
+        nuevoMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nuevoMenuActionPerformed(evt);
+            }
+        });
 
         imprimirMenu.setText("Imprimir Menú");
 
         anadirMenú.setText("Añadir Menú");
+        anadirMenú.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                anadirMenúActionPerformed(evt);
+            }
+        });
 
         actualizarMenu.setText("Actualizar Menú");
+        actualizarMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actualizarMenuActionPerformed(evt);
+            }
+        });
 
         alimentos.setText("Alimentos");
         alimentos.addActionListener(new java.awt.event.ActionListener() {
@@ -161,7 +202,7 @@ public class PanelPrincipal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(fechaAndirComida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(fechaAndirComida, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel6)
                         .addGap(18, 18, 18)
@@ -239,6 +280,30 @@ public class PanelPrincipal extends javax.swing.JFrame {
 
     private void tablaComidaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaComidaMouseClicked
         BDComidas.recargarMenu();
+        String seleccion = (String) BDComidas.modeloComidas.getValueAt(PanelPrincipal.tablaComida.getSelectedRow(), 1);
+        if (seleccion.equals("Desayuno")) {
+            anadirComida.setSelectedIndex(0);
+        }
+        if (seleccion.equals("Comida")) {
+            anadirComida.setSelectedIndex(1);
+        }
+        if (seleccion.equals("Cena")) {
+            anadirComida.setSelectedIndex(2);
+        }
+
+        /*anadirComida.setEnabled(false);
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        String fechaSeleccionada = sdf.format((Date) BDComidas.modeloComidas.getValueAt(PanelPrincipal.tablaComida.getSelectedRow(), 0));
+        fechaAndirComida.setDateFormatString(fechaSeleccionada);
+
+        int subtotal = 0;
+        for (int i = 0; i < tablaMenu.getRowCount(); i++) {
+            subtotal = subtotal + (int) tablaMenu.getValueAt(i, 1);
+        }
+        
+        String total = String.valueOf(subtotal);
+        sumatorioCalorias.setText(total);*/
     }//GEN-LAST:event_tablaComidaMouseClicked
 
     private void buscarComidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarComidaActionPerformed
@@ -246,10 +311,44 @@ public class PanelPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_buscarComidaActionPerformed
 
     private void alimentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alimentosActionPerformed
-       PanelAlimentos nuevo = new PanelAlimentos();
+        PanelAlimentos nuevo = new PanelAlimentos();
         nuevo.setVisible(true);
         CargarTablaAlimentos.cargandoTabla();
     }//GEN-LAST:event_alimentosActionPerformed
+
+    private void nuevoMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevoMenuActionPerformed
+        CrearMenu.nuevoMenu();
+    }//GEN-LAST:event_nuevoMenuActionPerformed
+
+    private void anadirMenúActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anadirMenúActionPerformed
+
+        try {
+            AnadirQuitarComida.anadir();
+        } catch (SQLException ex) {
+            Logger.getLogger(PanelPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }//GEN-LAST:event_anadirMenúActionPerformed
+
+    private void actualizarMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarMenuActionPerformed
+        try {
+            AnadirQuitarComida.actualizarComida();
+        } catch (SQLException ex) {
+            Logger.getLogger(PanelPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_actualizarMenuActionPerformed
+
+    private void borrarAlimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borrarAlimentoActionPerformed
+        CrearMenu.quitarAlimento();
+    }//GEN-LAST:event_borrarAlimentoActionPerformed
+
+    private void borrarComidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borrarComidaActionPerformed
+        try {
+            AnadirQuitarComida.quitar();
+        } catch (SQLException ex) {
+            Logger.getLogger(PanelPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_borrarComidaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -287,10 +386,13 @@ public class PanelPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPopupMenu PopupMenuComidas;
     public static javax.swing.JToggleButton actualizarMenu;
     public static javax.swing.JToggleButton alimentos;
     public static javax.swing.JComboBox<String> anadirComida;
     public static javax.swing.JToggleButton anadirMenú;
+    public static javax.swing.JMenuItem borrarAlimento;
+    private javax.swing.JMenuItem borrarComida;
     public static javax.swing.JToggleButton buscarComida;
     public static com.toedter.calendar.JDateChooser fechaAndirComida;
     public static com.toedter.calendar.JDateChooser fechaBuscarComidaIn;
@@ -303,6 +405,7 @@ public class PanelPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JPopupMenu jPopupMenuAlimentos;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     public static javax.swing.JToggleButton nuevoMenu;
