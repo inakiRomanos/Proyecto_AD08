@@ -57,6 +57,9 @@ public class InsertarQuitarAlimentos {
     public static void QuitarAli() {
         String alimentoSeleccionado = (String) CargarTablaAlimentos.modeloAlimentos.getValueAt(PanelAlimentos.tablaAlimentos.getSelectedRow(), 0);
 
+        
+        int reply = JOptionPane.showConfirmDialog(null, "¿Esta seguro que quiere eliminar el alimento seleccionado?", "Confirmar", JOptionPane.YES_NO_OPTION);
+        if (reply == JOptionPane.YES_OPTION) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("objectdb:db/database.inakiRomanos");
         EntityManager em = emf.createEntityManager();
 
@@ -69,7 +72,7 @@ public class InsertarQuitarAlimentos {
         em.close();
         emf.close();
         
-        CargarTablaAlimentos.cargandoTabla();;
+        CargarTablaAlimentos.cargandoTabla();}
     }
 
 }
