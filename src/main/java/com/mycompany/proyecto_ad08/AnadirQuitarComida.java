@@ -32,7 +32,7 @@ public class AnadirQuitarComida {
             pstmt = con.prepareStatement("INSERT INTO ALIMENTOS (FECHA,COMIDA,ALIMENTO,CALORIAS) VALUES (?,?,?,?)");
 
             pstmt.setObject(1, PanelPrincipal.fechaAndirComida.getDate());
-            pstmt.setObject(2, PanelAnadirComida.comidaAndirComidaIn.getSelectedItem().toString());
+            pstmt.setObject(2, PanelPrincipal.anadirComida.getSelectedItem().toString());
             pstmt.setObject(3, PanelPrincipal.tablaMenu.getValueAt(i, 0));
             pstmt.setObject(4, PanelPrincipal.tablaMenu.getValueAt(i, 1));
             pstmt.execute();
