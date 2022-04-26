@@ -46,7 +46,7 @@ public class PanelPrincipal extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         fechaBuscarComidaIn = new com.toedter.calendar.JDateChooser();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        comidaBuscar = new javax.swing.JComboBox<>();
         buscarComida = new javax.swing.JToggleButton();
         jLabel3 = new javax.swing.JLabel();
         fechaAndirComida = new com.toedter.calendar.JDateChooser();
@@ -122,8 +122,8 @@ public class PanelPrincipal extends javax.swing.JFrame {
 
         jLabel5.setText("Comida");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cena", "Comida", "Desayuno" }));
-        jComboBox1.setSelectedIndex(-1);
+        comidaBuscar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cena", "Comida", "Desayuno" }));
+        comidaBuscar.setSelectedIndex(-1);
 
         buscarComida.setText("Buscar");
         buscarComida.addActionListener(new java.awt.event.ActionListener() {
@@ -192,7 +192,7 @@ public class PanelPrincipal extends javax.swing.JFrame {
                                     .addComponent(jLabel4))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(comidaBuscar, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(fechaBuscarComidaIn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addComponent(buscarComida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)))
@@ -255,7 +255,7 @@ public class PanelPrincipal extends javax.swing.JFrame {
                             .addComponent(jLabel4))
                         .addGap(20, 20, 20)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(comidaBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5))
                         .addGap(16, 16, 16)
                         .addComponent(buscarComida))
@@ -307,7 +307,11 @@ public class PanelPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_tablaComidaMouseClicked
 
     private void buscarComidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarComidaActionPerformed
-        // TODO add your handling code here:
+        try {
+            BuscarComidas.buscar();
+        } catch (SQLException ex) {
+            Logger.getLogger(PanelPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_buscarComidaActionPerformed
 
     private void alimentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alimentosActionPerformed
@@ -394,10 +398,10 @@ public class PanelPrincipal extends javax.swing.JFrame {
     public static javax.swing.JMenuItem borrarAlimento;
     private javax.swing.JMenuItem borrarComida;
     public static javax.swing.JToggleButton buscarComida;
+    public static javax.swing.JComboBox<String> comidaBuscar;
     public static com.toedter.calendar.JDateChooser fechaAndirComida;
     public static com.toedter.calendar.JDateChooser fechaBuscarComidaIn;
     public static javax.swing.JToggleButton imprimirMenu;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
