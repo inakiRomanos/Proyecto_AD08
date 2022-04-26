@@ -29,8 +29,8 @@ public class CrearMenu {
     }
 
     public static void ponerAlimento() {
-        String nombre = (String) CargarTablaAlimentos.modeloAlimentos.getValueAt(PanelPrincipal.tablaAlimentos.getSelectedRow(), 0);
-        int calorias = (int) CargarTablaAlimentos.modeloAlimentos.getValueAt(PanelPrincipal.tablaAlimentos.getSelectedRow(), 1);
+        String nombre = (String) CargarTablaAlimentos.modeloAlimentos.getValueAt(PanelAlimentos.tablaAlimentos.getSelectedRow(), 0);
+        int calorias = (int) CargarTablaAlimentos.modeloAlimentos.getValueAt(PanelAlimentos.tablaAlimentos.getSelectedRow(), 1);
 
         int validar = 0;
 

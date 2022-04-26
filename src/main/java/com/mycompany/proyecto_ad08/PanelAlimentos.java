@@ -50,6 +50,11 @@ public class PanelAlimentos extends javax.swing.JFrame {
         jLabel1.setText("Alimentos");
 
         anadirMenu.setText("Añadir Menú");
+        anadirMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                anadirMenuActionPerformed(evt);
+            }
+        });
 
         alimentoBuscar.setText("Buscar");
 
@@ -84,6 +89,10 @@ public class PanelAlimentos extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void anadirMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anadirMenuActionPerformed
+        CrearMenu.ponerAlimento();
+    }//GEN-LAST:event_anadirMenuActionPerformed
 
     /**
      * @param args the command line arguments

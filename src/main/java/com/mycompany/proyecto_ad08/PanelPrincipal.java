@@ -126,6 +126,11 @@ public class PanelPrincipal extends javax.swing.JFrame {
         actualizarMenu.setText("Actualizar Menú");
 
         alimentos.setText("Alimentos");
+        alimentos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                alimentosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -239,6 +244,12 @@ public class PanelPrincipal extends javax.swing.JFrame {
     private void buscarComidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarComidaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_buscarComidaActionPerformed
+
+    private void alimentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alimentosActionPerformed
+       PanelAlimentos nuevo = new PanelAlimentos();
+        nuevo.setVisible(true);
+        CargarTablaAlimentos.cargandoTabla();
+    }//GEN-LAST:event_alimentosActionPerformed
 
     /**
      * @param args the command line arguments

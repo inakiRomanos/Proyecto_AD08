@@ -75,7 +75,7 @@ public class BuscarAlimentos {
             modelo.addRow(extraccion);
         }
 
-        PanelPrincipal.tablaAlimentos.setModel(modelo);
+        PanelAlimentos.tablaAlimentos.setModel(modelo);
 
     }
 

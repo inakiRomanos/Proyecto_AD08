@@ -46,7 +46,7 @@ public class CargarTablaAlimentos {
         });
 
         
-       PanelPrincipal.tablaAlimentos.setModel(modeloAlimentos);
+       PanelAlimentos.tablaAlimentos.setModel(modeloAlimentos);
         
         em.close();
         emf.close();

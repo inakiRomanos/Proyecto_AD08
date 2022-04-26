@@ -52,7 +52,7 @@ public class BDComidas {
         
         modeloComidas.addColumn("FECHA");
         modeloComidas.addColumn("COMIDA");
-        modeloComidas.addColumn("CALORIAS");
+        
         
                 // Nos conectamos a la base de datos
         con = getConnection();
@@ -64,7 +64,7 @@ public class BDComidas {
 
             ResultSet rs = stmt.executeQuery("SELECT DISTINCT FECHA, COMIDA from ALIMENTOS");
             while (rs.next()) {
-                Object[] datos = {rs.getDate("FECHA"), rs.getString("COMIDA"), "0"};
+                Object[] datos = {rs.getDate("FECHA"), rs.getString("COMIDA")};
                 modeloComidas.addRow(datos);
             }
 

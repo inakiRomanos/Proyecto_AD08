@@ -31,7 +31,7 @@ public class BuscarComidas {
 
         modeloBuscarComidas.addColumn("FECHA");
         modeloBuscarComidas.addColumn("COMIDA");
-        modeloBuscarComidas.addColumn("CALORIAS");
+        
 
         java.util.Date fecha = PanelBuscarComida.fechaBuscarComidaIn.getDate();
 
@@ -47,7 +47,7 @@ public class BuscarComidas {
             ResultSet rs = pstmt.executeQuery();
 
             while (rs.next()) {
-                Object[] datos = {rs.getDate("FECHA"), rs.getString("COMIDA"), "0"};
+                Object[] datos = {rs.getDate("FECHA"), rs.getString("COMIDA")};
                 modeloBuscarComidas.addRow(datos);
             }
 

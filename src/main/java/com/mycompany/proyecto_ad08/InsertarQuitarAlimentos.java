@@ -55,7 +55,7 @@ public class InsertarQuitarAlimentos {
     }
 
     public static void QuitarAli() {
-        String alimentoSeleccionado = (String) CargarTablaAlimentos.modeloAlimentos.getValueAt(PanelPrincipal.tablaAlimentos.getSelectedRow(), 0);
+        String alimentoSeleccionado = (String) CargarTablaAlimentos.modeloAlimentos.getValueAt(PanelAlimentos.tablaAlimentos.getSelectedRow(), 0);
 
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("objectdb:db/database.inakiRomanos");
         EntityManager em = emf.createEntityManager();
