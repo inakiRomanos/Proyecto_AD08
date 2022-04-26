@@ -31,11 +31,10 @@ public class BuscarComidas {
 
         modeloBuscarComidas.addColumn("FECHA");
         modeloBuscarComidas.addColumn("COMIDA");
-        
 
-        java.util.Date fecha = PanelBuscarComida.fechaBuscarComidaIn.getDate();
+        java.util.Date fecha = PanelPrincipal.fechaBuscarComidaIn.getDate();
 
-        if (fecha != null & PanelBuscarComida.comidaBuscarComidaIn.getSelectedItem() == null) {
+        if (fecha != null & PanelPrincipal.comidaBuscar.getSelectedItem() == null) {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             String fechaSeleccionada = sdf.format(fecha);
 
@@ -47,20 +46,19 @@ public class BuscarComidas {
             ResultSet rs = pstmt.executeQuery();
 
             while (rs.next()) {
-                Object[] datos = {rs.getDate("FECHA"), rs.getString("COMIDA")};
+                Object[] datos = {rs.getDate("FECHA"), rs.getString("COMIDA"), "0"};
                 modeloBuscarComidas.addRow(datos);
             }
 
             //Cerramos la conexión
             con.close();
+            PanelPrincipal.tablaComida.setModel(modeloBuscarComidas);
 
-        }
-
-        if (fecha == null & PanelBuscarComida.comidaBuscarComidaIn.getSelectedItem() != null) {
+        } else if (fecha == null & PanelPrincipal.comidaBuscar.getSelectedItem() != null) {
             con = getConnection();
 
             PreparedStatement pstmt = con.prepareStatement("SELECT DISTINCT FECHA, COMIDA from ALIMENTOS WHERE COMIDA = ? ");
-            pstmt.setString(1, PanelBuscarComida.comidaBuscarComidaIn.getSelectedItem().toString());
+            pstmt.setString(1, PanelPrincipal.comidaBuscar.getSelectedItem().toString());
 
             ResultSet rs = pstmt.executeQuery();
 
@@ -71,10 +69,9 @@ public class BuscarComidas {
 
             //Cerramos la conexión
             con.close();
+            PanelPrincipal.tablaComida.setModel(modeloBuscarComidas);
 
-        }
-
-        if (fecha != null & PanelBuscarComida.comidaBuscarComidaIn.getSelectedItem() != null) {
+        } else if (fecha != null & PanelPrincipal.comidaBuscar.getSelectedItem() != null) {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             String fechaSeleccionada = sdf.format(fecha);
 
@@ -82,7 +79,7 @@ public class BuscarComidas {
 
             PreparedStatement pstmt = con.prepareStatement("SELECT DISTINCT FECHA, COMIDA from ALIMENTOS WHERE FECHA = ? AND COMIDA = ? ");
             pstmt.setString(1, fechaSeleccionada);
-            pstmt.setString(2, PanelBuscarComida.comidaBuscarComidaIn.getSelectedItem().toString());
+            pstmt.setString(2, PanelPrincipal.comidaBuscar.getSelectedItem().toString());
 
             ResultSet rs = pstmt.executeQuery();
 
@@ -93,10 +90,11 @@ public class BuscarComidas {
 
             //Cerramos la conexión
             con.close();
+            PanelPrincipal.tablaComida.setModel(modeloBuscarComidas);
 
         }
-
-        PanelPrincipal.tablaComida.setModel(modeloBuscarComidas);
+        
+        else{ BDComidas.cargarTabla();}
 
     }
 
