@@ -57,6 +57,9 @@ public class CrearMenu {
     }
 
     public static void quitarAlimento() {
+        int reply = JOptionPane.showConfirmDialog(null, "¿Esta seguro que quiere eliminar el alimento seleccionado?", "Confirmar", JOptionPane.YES_NO_OPTION);
+        if (reply == JOptionPane.YES_OPTION) {
         modeloMenu.removeRow(PanelPrincipal.tablaMenu.getSelectedRowCount());
+        }
     }
 }
