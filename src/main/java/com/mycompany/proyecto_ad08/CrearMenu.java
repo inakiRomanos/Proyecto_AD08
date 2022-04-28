@@ -55,9 +55,6 @@ public class CrearMenu {
             CrearMenu.modeloMenu.removeRow(0);
         }
 
-        PanelPrincipal.fechaAndirComida.setEnabled(true);
-        PanelPrincipal.anadirComida.setEnabled(true);
-        PanelPrincipal.sumatorioCalorias.setText("");
     }
 
     public static void quitarAlimento() {
