@@ -11,7 +11,6 @@
         <MenuItem class="javax.swing.JMenuItem" name="borrar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Borrar"/>
-            <Property name="actionCommand" type="java.lang.String" value="Borrar"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="borrarActionPerformed"/>

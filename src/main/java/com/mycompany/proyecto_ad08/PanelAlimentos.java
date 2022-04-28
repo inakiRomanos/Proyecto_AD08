@@ -123,7 +123,8 @@ public class PanelAlimentos extends javax.swing.JFrame {
     }//GEN-LAST:event_anadirMenuActionPerformed
 
     private void alimentoBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alimentoBuscarActionPerformed
-        BuscarAlimentos.Buscar();
+       PanelBuscarAlimento nuevo = new PanelBuscarAlimento();
+       nuevo.setVisible(true);
     }//GEN-LAST:event_alimentoBuscarActionPerformed
 
     private void borrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borrarActionPerformed
