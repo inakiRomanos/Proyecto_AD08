@@ -34,7 +34,7 @@ public class PanelAnadirAlimento extends javax.swing.JFrame {
         cancelarAnadirAlimento = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Añadir Alimento");
+        setTitle("Añadir Plato");
 
         jLabel1.setText("Nombre");
 
@@ -98,7 +98,7 @@ public class PanelAnadirAlimento extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void aceptarAnadirAlimentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarAnadirAlimentosActionPerformed
-        InsertarQuitarAlimentos.insertarAli();
+        AnadirQuitarAlimentos.insertarAli();
         CargarTablaAlimentos.cargandoTabla();
         dispose();
     }//GEN-LAST:event_aceptarAnadirAlimentosActionPerformed
