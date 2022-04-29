@@ -4,23 +4,13 @@
  */
 package com.mycompany.proyecto_ad08;
 
-import static com.mycompany.proyecto_ad08.BDComidas.con;
-import static com.mycompany.proyecto_ad08.BDComidas.getConnection;
-import java.sql.Connection;
+import java.io.IOException;
 import java.sql.Date;
-import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JasperExportManager;
-import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperPrint;
-
 
 /**
  *
@@ -336,13 +326,13 @@ public class PanelPrincipal extends javax.swing.JFrame {
     private void tablaComidaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaComidaMouseClicked
         BDComidas.recargarMenu();
         String seleccion = (String) BDComidas.modeloComidas.getValueAt(PanelPrincipal.tablaComida.getSelectedRow(), 1);
-        if (seleccion.equals("Desayuno")) {
+        if (seleccion.equals("DESAYUNO")) {
             anadirComida.setSelectedIndex(0);
         }
-        if (seleccion.equals("Comida")) {
+        if (seleccion.equals("COMIDA")) {
             anadirComida.setSelectedIndex(1);
         }
-        if (seleccion.equals("Cena")) {
+        if (seleccion.equals("CENA")) {
             anadirComida.setSelectedIndex(2);
         }
 
@@ -356,25 +346,29 @@ public class PanelPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_tablaComidaMouseClicked
 
     private void buscarComidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarComidaActionPerformed
+     //Nos permite buscar comidas por la fecha y/o la comida
         try {
             BuscarComidas.buscar();
         } catch (SQLException ex) {
             Logger.getLogger(PanelPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
+
     }//GEN-LAST:event_buscarComidaActionPerformed
 
     private void alimentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alimentosActionPerformed
+        //Abre el panel alimentos
         PanelAlimentos nuevo = new PanelAlimentos();
         nuevo.setVisible(true);
         CargarTablaAlimentos.cargandoTabla();
     }//GEN-LAST:event_alimentosActionPerformed
 
     private void nuevoMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevoMenuActionPerformed
+        //Borra la tabla del menu
         CrearMenu.nuevoMenu();
     }//GEN-LAST:event_nuevoMenuActionPerformed
 
     private void anadirMenúActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anadirMenúActionPerformed
-
+        //Nos permite quitar una comida con el boton derecho
         try {
             AnadirQuitarComida.anadir();
         } catch (SQLException ex) {
@@ -384,18 +378,25 @@ public class PanelPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_anadirMenúActionPerformed
 
     private void actualizarMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarMenuActionPerformed
-        try {
-            AnadirQuitarComida.actualizarComida();
-        } catch (SQLException ex) {
-            Logger.getLogger(PanelPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        //Nos guarda los cambios relizados en una comida en la BBDD
+        if (tablaComida.getSelectedRowCount() > 0) {
+            try {
+                AnadirQuitarComida.actualizarComida();
+            } catch (SQLException ex) {
+                Logger.getLogger(PanelPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Por favor, seleccione un menú");
         }
     }//GEN-LAST:event_actualizarMenuActionPerformed
 
     private void borrarAlimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borrarAlimentoActionPerformed
+        //Nos permite borrar un alimento de la tabla del menu con el boton derecho
         CrearMenu.quitarAlimento();
     }//GEN-LAST:event_borrarAlimentoActionPerformed
 
     private void borrarComidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borrarComidaActionPerformed
+        ////Nos permite borrar una comida de la tabla del comidas con el boton derecho
         try {
             AnadirQuitarComida.quitar();
         } catch (SQLException ex) {
@@ -404,31 +405,13 @@ public class PanelPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_borrarComidaActionPerformed
 
     private void imprimirMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imprimirMenuActionPerformed
-       {
-            con = getConnection();
-
-            Map parametros = new HashMap();
-            parametros.put("FECHA", fechaAndirComida.getDate());
-            parametros.put("COMIDA", anadirComida.getSelectedItem().toString());
-
-            JasperPrint print = null;
+        //Nos permite imprimir e menu seleccionado
+        {
             try {
-                print = JasperFillManager.fillReport("ProyectoAD.jasper", parametros, con);
-            } catch (JRException ex) {
+                ImprimirMenu.guardarArchivo();
+            } catch (JRException | IOException ex) {
                 Logger.getLogger(PanelPrincipal.class.getName()).log(Level.SEVERE, null, ex);
             }
-           try {
-               JasperExportManager.exportReportToPdfFile(print, "Menu.pdf");
-           } catch (JRException ex) {
-               Logger.getLogger(PanelPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-           }
-            try {
-                con.close();
-            } catch (SQLException ex) {
-                Logger.getLogger(PanelPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            System.exit(0);
-
         }
 
     }//GEN-LAST:event_imprimirMenuActionPerformed
