@@ -9,6 +9,9 @@ import static com.mycompany.proyecto_ad08.BDComidas.getConnection;
 import static com.mycompany.proyecto_ad08.PanelPrincipal.anadirComida;
 import static com.mycompany.proyecto_ad08.PanelPrincipal.fechaAndirComida;
 import java.awt.Component;
+import java.awt.Desktop;
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JFileChooser;
@@ -25,12 +28,12 @@ import net.sf.jasperreports.engine.JasperPrint;
  */
 public class ImprimirMenu {
 
-    public  static  String ruta;
-    
+    public static String ruta;
+
     public ImprimirMenu() {
     }
 
-    static public void imprimir() throws JRException {
+    static public void imprimir() throws JRException, IOException {
         con = getConnection();
 
         Map parametros = new HashMap();
@@ -39,6 +42,12 @@ public class ImprimirMenu {
 
         JasperPrint print = JasperFillManager.fillReport("Menus/Menus.jasper", parametros, con);
         JasperExportManager.exportReportToPdfFile(print, ruta);
+        try {
+            File path = new File(ruta);
+            Desktop.getDesktop().open(path);
+        } catch (IOException ex) {
+        }
+
         System.exit(0);
     }
 
@@ -47,12 +56,11 @@ public class ImprimirMenu {
         return filter;
     }
 
-    public static void guardarArchivo() throws JRException {
+    public static void guardarArchivo() throws JRException, IOException {
 
         JFileChooser fc = new JFileChooser();
-        
-        fc.setApproveButtonText("Guardar");
 
+        fc.setApproveButtonText("Guardar");
 
         fc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
 
@@ -61,17 +69,16 @@ public class ImprimirMenu {
         fc.setFileFilter(filtro);
         Component ventana = null;
 
-        int seleccion=fc.showOpenDialog(ventana);
-        
-        if(seleccion==JFileChooser.APPROVE_OPTION){
-            
+        int seleccion = fc.showOpenDialog(ventana);
+
+        if (seleccion == JFileChooser.APPROVE_OPTION) {
+
             ruta = fc.getSelectedFile().toString();
             ruta = ruta + ".pdf";
-            
+
             imprimir();
         }
-        
-        
-    }
 
     }
+
+}
