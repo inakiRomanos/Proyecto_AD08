@@ -21,7 +21,7 @@ public class AnadirQuitarComida {
     public static void anadir() throws SQLException {
         int filas = PanelPrincipal.tablaMenu.getRowCount();
 
-        //Comprobamos que los campos de nombre y calorias tengan datos
+        //Comprobamos que los campos de nombre y calorias tengan datos y que el menu contenga platos
         if (PanelPrincipal.anadirComida.getSelectedItem().toString().equals("")) {
             JOptionPane.showMessageDialog(null, "El campo TURNO es obligatorio");
         } else if (PanelPrincipal.fechaAndirComida.getDate() == null) {
