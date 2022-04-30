@@ -323,13 +323,13 @@ public class PanelPrincipal extends javax.swing.JFrame {
         BDComidas.recargarMenu();
         String seleccion = (String) BDComidas.modeloComidas.getValueAt(PanelPrincipal.tablaComida.getSelectedRow(), 1);
         if (seleccion.equals("DESAYUNO")) {
-            anadirComida.setSelectedIndex(0);
-        }
-        if (seleccion.equals("COMIDA")) {
             anadirComida.setSelectedIndex(1);
         }
-        if (seleccion.equals("CENA")) {
+        if (seleccion.equals("COMIDA")) {
             anadirComida.setSelectedIndex(2);
+        }
+        if (seleccion.equals("CENA")) {
+            anadirComida.setSelectedIndex(3);
         }
 
         anadirComida.setEnabled(false);
