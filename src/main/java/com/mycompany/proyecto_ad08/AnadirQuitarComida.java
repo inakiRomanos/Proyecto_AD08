@@ -2,10 +2,13 @@ package com.mycompany.proyecto_ad08;
 
 import static com.mycompany.proyecto_ad08.BDComidas.con;
 import static com.mycompany.proyecto_ad08.BDComidas.getConnection;
+import com.objectdb.o.MMM;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
+import javax.swing.text.html.HTML;
 
 /**
  *
@@ -27,15 +30,15 @@ public class AnadirQuitarComida {
  
         
         for (int e = 0; e < nFilas; e++) {
-            if(PanelPrincipal.tablaComida.getValueAt(e, 0).equals(PanelPrincipal.fechaAndirComida.getDate()) & 
-              (PanelPrincipal.tablaComida.getValueAt(e, 1).equals(PanelPrincipal.anadirComida.getSelectedItem()))){
+                       
+            String fechaTabla = (PanelPrincipal.fechaAndirComida.getDate()).toString();
+            String fechaIN = PanelPrincipal.tablaComida.getValueAt(e, 0).toString();       
+            
+            if(fechaTabla.equals(fechaIN) & PanelPrincipal.tablaComida.getValueAt(e, 1).equals(PanelPrincipal.anadirComida.getSelectedItem())){
                 coincidencia = coincidencia+1;
             }
         }
-        
-        
-        
-        
+             
         //Comprobamos que los campos de nombre y calorias tengan datos y que el menu contenga platos
         if (PanelPrincipal.anadirComida.getSelectedItem().toString().equals("")) {
             JOptionPane.showMessageDialog(null, "El campo TURNO es obligatorio");

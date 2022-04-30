@@ -63,6 +63,7 @@ public class ImprimirMenu {
 
         fc.setApproveButtonText("Guardar");
 
+
         fc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
 
         FileNameExtensionFilter filtro = new FileNameExtensionFilter("*.PDF", "pdf");
@@ -75,9 +76,13 @@ public class ImprimirMenu {
         if (seleccion == JFileChooser.APPROVE_OPTION) {
 
             ruta = fc.getSelectedFile().toString();
-            ruta = ruta + ".pdf";
-
+            ruta = ruta + ".pdf";        
             imprimir();
+            
+        }
+        
+        if (seleccion == JFileChooser.ERROR_OPTION) {
+         fc.setVisible(false);
         }
 
     }
