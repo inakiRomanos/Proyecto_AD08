@@ -13,6 +13,8 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
+ * En esta clase buscamos alimentos filtrandolos por nombre o/u por calorias
+ * 
  * @author i_rom
  */
 public class BuscarAlimentos {
@@ -21,8 +23,10 @@ public class BuscarAlimentos {
     }
 
     public static void Buscar() {
-
-        String nombreBuscar = PanelBuscarAlimento.nombreBuscarAlimento.getText();
+        
+        
+        //Recogemos los datos del nombre y las calorias max y min a buscar
+        String nombreBuscar = PanelBuscarAlimento.nombreBuscarAlimento.getText().toUpperCase();
         int caloriasMin = (int) PanelBuscarAlimento.caloriaMinBuscarAlimento.getValue();
         int caloriasMax = (int) PanelBuscarAlimento.caloriaMaxBuscarAlimento.getValue();
   
@@ -60,7 +64,9 @@ public class BuscarAlimentos {
     }
 
     public static void CargarDatos(List<Alimentos> insertarPeliculas) {
-
+        
+        
+        //Recargamos la tabla alimentos del panel alimentos con los elementos filtrados segun la buqueda
         modelo = new DefaultTableModel();
 
         modelo.addColumn("NOMBRE");

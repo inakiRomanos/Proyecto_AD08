@@ -130,8 +130,6 @@ public class PanelPrincipal extends javax.swing.JFrame {
             }
         });
 
-        comidaBuscar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DESAYUNO", "COMIDA", "CENA" }));
-
         jLabel8.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel8.setText("Busqueda Menús");
 
@@ -225,8 +223,6 @@ public class PanelPrincipal extends javax.swing.JFrame {
         jLabel3.setText("Fecha");
 
         jLabel6.setText("Turno");
-
-        anadirComida.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DESAYUNO", "COMIDA", "CENA" }));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);

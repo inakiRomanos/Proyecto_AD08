@@ -3,6 +3,8 @@ package com.mycompany.proyecto_ad08;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+/*En esta clase creamos los metodos de la BBDD BDObject donde incluimos los platos(en codigo alimentos)*/
+
 @Entity //Anotación que indica que esta es una clase que debe almacenarse en la base de datos
 class Alimentos {
 

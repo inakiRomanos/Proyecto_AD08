@@ -7,9 +7,9 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
+ * En esta clase insertamos datos en la base de datos alimentos
+ * 
  * @author i_rom
- *
- * Creamos la base de dato y la rellenamos
  *
  */
 public class BDAlimentos {
@@ -27,16 +27,16 @@ public class BDAlimentos {
         //Aquí se realizan todas las acciones con la base de datos
         //se crean  objetos tipo Pelicula
         try { 
-        Alimentos a1 = new Alimentos("Paella", 1500);
-        Alimentos a2 = new Alimentos("Macaroones", 1200);
-        Alimentos a3 = new Alimentos("Alcachofas", 500);
-        Alimentos a4 = new Alimentos("Lubina", 600);
-        Alimentos a5 = new Alimentos("Pollo", 750);
-        Alimentos a6 = new Alimentos("Cuajada", 125);
-        Alimentos a7 = new Alimentos("Garbanzos", 1600);
-        Alimentos a8 = new Alimentos("Hamburguesa", 1800);
-        Alimentos a9 = new Alimentos("Sopa", 300);
-        Alimentos a10 = new Alimentos("Ensalda", 250);
+        Alimentos a1 = new Alimentos("PAELLA", 1500);
+        Alimentos a2 = new Alimentos("MACARRONES", 1200);
+        Alimentos a3 = new Alimentos("ALCACHOFAS", 500);
+        Alimentos a4 = new Alimentos("LUBINA", 600);
+        Alimentos a5 = new Alimentos("POLLO", 750);
+        Alimentos a6 = new Alimentos("CUAJADA", 125);
+        Alimentos a7 = new Alimentos("GARBANZOS", 1600);
+        Alimentos a8 = new Alimentos("HAMBURGUESA", 1800);
+        Alimentos a9 = new Alimentos("SOPA", 300);
+        Alimentos a10 = new Alimentos("ENSALADA", 250);
         
         
 

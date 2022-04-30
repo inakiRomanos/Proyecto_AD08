@@ -7,13 +7,10 @@ import java.sql.SQLException;
 import java.sql.Date;
 import javax.swing.JOptionPane;
 
-
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 /**
  *
+ * En esta clase podemos añadir, quitar y actualizar menus(en codigo comida)
+ * 
  * @author i_rom
  */
 public class AnadirQuitarComida {
@@ -45,30 +42,38 @@ public class AnadirQuitarComida {
 
     public static void quitar() throws SQLException {
 
-        int reply = JOptionPane.showConfirmDialog(null, "¿Esta seguro que quiere eliminar la comida seleccionada?", "Confirmar", JOptionPane.YES_NO_OPTION);
+        //Pedimos verificacion del borrado
+        int reply = JOptionPane.showConfirmDialog(null, "¿Esta seguro que quiere eliminar el menu seleccionada?", "Confirmar", JOptionPane.YES_NO_OPTION);
         if (reply == JOptionPane.YES_OPTION) {
-
+            
+            //Conectamos BBDD
             con = getConnection();
 
             PreparedStatement pstmt = null;
-
+            
+            //Borramos la comida seleccionada
             pstmt = con.prepareStatement("DELETE FROM ALIMENTOS WHERE FECHA=? AND COMIDA=?");
 
             pstmt.setObject(1, (Date) BDComidas.modeloComidas.getValueAt(PanelPrincipal.tablaComida.getSelectedRow(), 0));
             pstmt.setObject(2, (String) BDComidas.modeloComidas.getValueAt(PanelPrincipal.tablaComida.getSelectedRow(), 1));
             pstmt.executeUpdate();
-
-            JOptionPane.showMessageDialog(null, "La comida seleccionada ha sido borrado");
-
+            
+            //Informamos del borrado
+            JOptionPane.showMessageDialog(null, "El menú seleccionada ha sido borrado");
+            
+            //Actualizamos el panel
             BDComidas.cargarTabla();
             CrearMenu.nuevoMenu();
-
+ 
+            //Desconectamos BBDD
             con.close();
         }
 
     }
 
     static public void borrarActualizar() throws SQLException {
+        
+        //En este metodo borramos los datos de la comida seleccionada para poder volver a insertarla con los nuevos datos actualizados
 
         con = getConnection();
 
@@ -86,6 +91,8 @@ public class AnadirQuitarComida {
 
     public static void anadirActualizar() throws SQLException {
 
+        //En este metodo volvemos añadir la comida seleccionada con los datos actualizamos
+        
         con = getConnection();
 
         int filas = PanelPrincipal.tablaMenu.getRowCount();
@@ -107,6 +114,8 @@ public class AnadirQuitarComida {
     }
 
     public static void actualizarComida() throws SQLException {
+        
+        //Actulizamos la comida selccionada, borramos los datos viejos e insertamos los nuevos
 
         borrarActualizar();
         anadirActualizar();

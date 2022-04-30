@@ -51,7 +51,7 @@ public class BDComidas {
         modeloComidas = new DefaultTableModel();
         
         modeloComidas.addColumn("FECHA");
-        modeloComidas.addColumn("COMIDA");
+        modeloComidas.addColumn("TURNO");
         
         
                 // Nos conectamos a la base de datos

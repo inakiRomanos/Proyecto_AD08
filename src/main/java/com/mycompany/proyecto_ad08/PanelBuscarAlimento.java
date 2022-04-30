@@ -36,7 +36,7 @@ public class PanelBuscarAlimento extends javax.swing.JFrame {
         cancelarBuscarAliemnto = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Buscar Alimento");
+        setTitle("Buscar Plato");
 
         jLabel1.setText("Nombre");
 
@@ -84,9 +84,8 @@ public class PanelBuscarAlimento extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(caloriaMaxBuscarAlimento, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(caloriaMinBuscarAlimento, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
-                                .addComponent(nombreBuscarAlimento)))
+                            .addComponent(caloriaMinBuscarAlimento, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
+                            .addComponent(nombreBuscarAlimento, javax.swing.GroupLayout.Alignment.LEADING))
                         .addGap(16, 16, 16))))
         );
         layout.setVerticalGroup(

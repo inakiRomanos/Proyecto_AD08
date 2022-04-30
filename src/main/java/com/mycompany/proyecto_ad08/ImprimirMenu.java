@@ -34,6 +34,8 @@ public class ImprimirMenu {
     }
 
     static public void imprimir() throws JRException, IOException {
+        
+        //Este metodo nos permite imprimir en pdf el menu selccionado para ello usamos un .jasper
         con = getConnection();
 
         Map parametros = new HashMap();
@@ -42,6 +44,8 @@ public class ImprimirMenu {
 
         JasperPrint print = JasperFillManager.fillReport("Menus/Menus.jasper", parametros, con);
         JasperExportManager.exportReportToPdfFile(print, ruta);
+        
+        //Muestra el pdf despues de ser guardado
         try {
             File path = new File(ruta);
             Desktop.getDesktop().open(path);
@@ -51,12 +55,9 @@ public class ImprimirMenu {
         System.exit(0);
     }
 
-    static public FileFilter filtro() {
-        FileFilter filter = new FileNameExtensionFilter("pdf", "pdf");
-        return filter;
-    }
-
     public static void guardarArchivo() throws JRException, IOException {
+        
+        //Este metodo abre una ventana que nos permite seleccionar la ruta y el nombre con el que queremos guardar el pdf
 
         JFileChooser fc = new JFileChooser();
 

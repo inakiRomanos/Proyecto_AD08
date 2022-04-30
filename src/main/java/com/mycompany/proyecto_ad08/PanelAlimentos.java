@@ -4,6 +4,8 @@
  */
 package com.mycompany.proyecto_ad08;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author i_rom
@@ -36,7 +38,6 @@ public class PanelAlimentos extends javax.swing.JFrame {
         anadirAlimento = new javax.swing.JButton();
 
         borrar.setText("Borrar");
-        borrar.setActionCommand("Borrar");
         borrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 borrarActionPerformed(evt);
@@ -60,9 +61,9 @@ public class PanelAlimentos extends javax.swing.JFrame {
         tablaAlimentos.setComponentPopupMenu(jPopupMenu1);
         jScrollPane1.setViewportView(tablaAlimentos);
 
-        jLabel1.setText("Alimentos");
+        jLabel1.setText("Platos");
 
-        anadirMenu.setText("Añadir Menú");
+        anadirMenu.setText("Añadir al Menú");
         anadirMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 anadirMenuActionPerformed(evt);
@@ -76,7 +77,7 @@ public class PanelAlimentos extends javax.swing.JFrame {
             }
         });
 
-        anadirAlimento.setText("Añadir Alimento");
+        anadirAlimento.setText("Añadir Plato");
         anadirAlimento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 anadirAlimentoActionPerformed(evt);
@@ -119,19 +120,25 @@ public class PanelAlimentos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void anadirMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anadirMenuActionPerformed
-        CrearMenu.ponerAlimento();
+        //Este boton añade el alimento seleccionado al menu
+        if(tablaAlimentos.getSelectedRowCount() > 0){
+            CrearMenu.ponerAlimento();
+        }
+        else{JOptionPane.showMessageDialog(null, "Por favor, seleccione un plato");}
     }//GEN-LAST:event_anadirMenuActionPerformed
-
+    //Este boton abre un menu para realizar busquedas
     private void alimentoBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alimentoBuscarActionPerformed
        PanelBuscarAlimento nuevo = new PanelBuscarAlimento();
        nuevo.setVisible(true);
     }//GEN-LAST:event_alimentoBuscarActionPerformed
 
     private void borrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borrarActionPerformed
-        InsertarQuitarAlimentos.QuitarAli();
+        //Borra el alimento seleccionado con el boton derecho
+        AnadirQuitarAlimentos.QuitarAli();
     }//GEN-LAST:event_borrarActionPerformed
 
     private void anadirAlimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anadirAlimentoActionPerformed
+        //Abre un panel que nos permite añdir un nuevo alimento
         PanelAnadirAlimento nuevo = new PanelAnadirAlimento();
         nuevo.setVisible(true);
     }//GEN-LAST:event_anadirAlimentoActionPerformed
