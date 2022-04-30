@@ -27,7 +27,7 @@ public class AnadirQuitarComida {
         } else if (PanelPrincipal.fechaAndirComida.getDate() == null) {
             JOptionPane.showMessageDialog(null, "El campo FECHA es obligatorio");
         } else if (PanelPrincipal.tablaMenu.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "El menu no contien platos");
+            JOptionPane.showMessageDialog(null, "El menu no contiene platos");
         } else {
 
             con = getConnection();
