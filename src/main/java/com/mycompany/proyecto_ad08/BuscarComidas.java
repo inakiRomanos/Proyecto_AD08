@@ -37,7 +37,7 @@ public class BuscarComidas {
         java.util.Date fecha = PanelPrincipal.fechaBuscarComidaIn.getDate();
 
         //Si hemos seleccionado fecha pero no comida buscaremos por fecha
-        if (fecha != null & PanelPrincipal.comidaBuscar.getSelectedItem() == null) {
+        if (fecha != null & PanelPrincipal.comidaBuscar.getSelectedItem().toString().equals("")) {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             String fechaSeleccionada = sdf.format(fecha);
             
@@ -62,7 +62,7 @@ public class BuscarComidas {
             PanelPrincipal.tablaComida.setModel(modeloBuscarComidas);
 
             //Si hemos seleccionado comida pero no fecha buscamos por comida
-        } else if (fecha == null & PanelPrincipal.comidaBuscar.getSelectedItem() != null) {
+        } else if (fecha == null & !PanelPrincipal.comidaBuscar.getSelectedItem().toString().equals("")) {
             con = getConnection();
 
             PreparedStatement pstmt = con.prepareStatement("SELECT DISTINCT FECHA, COMIDA from ALIMENTOS WHERE COMIDA = ? ");
@@ -79,7 +79,7 @@ public class BuscarComidas {
             PanelPrincipal.tablaComida.setModel(modeloBuscarComidas);
 
             //Si hemos seleccionado ambos campos la busqueda se filtra con los dos
-        } else if (fecha != null & PanelPrincipal.comidaBuscar.getSelectedItem() != null) {
+        } else if (fecha != null & !PanelPrincipal.comidaBuscar.getSelectedItem().toString().equals("")) {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             String fechaSeleccionada = sdf.format(fecha);
 
@@ -102,7 +102,8 @@ public class BuscarComidas {
         }
         
         //Si no hemos seleccionado ningun campo se cargan todas las comidas
-        else{ BDComidas.cargarTabla();}
+        else
+        { BDComidas.cargarTabla();}
 
     }
 
