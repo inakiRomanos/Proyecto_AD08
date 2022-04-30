@@ -21,6 +21,21 @@ public class AnadirQuitarComida {
     public static void anadir() throws SQLException {
         int filas = PanelPrincipal.tablaMenu.getRowCount();
 
+        //Comprobamos que la comida no existe
+        int nFilas = PanelPrincipal.tablaComida.getRowCount();
+        int coincidencia = 0;
+ 
+        
+        for (int e = 0; e < nFilas; e++) {
+            if(PanelPrincipal.tablaComida.getValueAt(e, 0).equals(PanelPrincipal.fechaAndirComida.getDate()) & 
+              (PanelPrincipal.tablaComida.getValueAt(e, 1).equals(PanelPrincipal.anadirComida.getSelectedItem()))){
+                coincidencia = coincidencia+1;
+            }
+        }
+        
+        
+        
+        
         //Comprobamos que los campos de nombre y calorias tengan datos y que el menu contenga platos
         if (PanelPrincipal.anadirComida.getSelectedItem().toString().equals("")) {
             JOptionPane.showMessageDialog(null, "El campo TURNO es obligatorio");
@@ -28,6 +43,8 @@ public class AnadirQuitarComida {
             JOptionPane.showMessageDialog(null, "El campo FECHA es obligatorio");
         } else if (PanelPrincipal.tablaMenu.getRowCount() == 0) {
             JOptionPane.showMessageDialog(null, "El menu no contiene platos");
+        } else if (coincidencia!= 0) {
+            JOptionPane.showMessageDialog(null, "El menu ya existe");
         } else {
 
             con = getConnection();
