@@ -12,6 +12,7 @@ import java.awt.Component;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JFileChooser;
@@ -34,17 +35,22 @@ public class ImprimirMenu {
     }
 
     static public void imprimir() throws JRException, IOException {
-        
+
         //Este metodo nos permite imprimir en pdf el menu selccionado para ello usamos un .jasper
         con = getConnection();
 
         Map parametros = new HashMap();
-        parametros.put("FECHA", fechaAndirComida.getDate());
-        parametros.put("COMIDA", anadirComida.getSelectedItem().toString());
+
+        //java.util.Date fecha = PanelPrincipal.fechaAndirComida.getDate();
+        //SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        //String fechaSeleccionada = sdf.format(fecha);
+
+        parametros.put("fecha", PanelPrincipal.fechaAndirComida.getDate());
+        parametros.put("comida", anadirComida.getSelectedItem().toString());
 
         JasperPrint print = JasperFillManager.fillReport("Menus/Menus.jasper", parametros, con);
         JasperExportManager.exportReportToPdfFile(print, ruta);
-        
+
         //Muestra el pdf despues de ser guardado
         try {
             File path = new File(ruta);
@@ -56,13 +62,11 @@ public class ImprimirMenu {
     }
 
     public static void guardarArchivo() throws JRException, IOException {
-        
-        //Este metodo abre una ventana que nos permite seleccionar la ruta y el nombre con el que queremos guardar el pdf
 
+        //Este metodo abre una ventana que nos permite seleccionar la ruta y el nombre con el que queremos guardar el pdf
         JFileChooser fc = new JFileChooser();
 
         fc.setApproveButtonText("Guardar");
-
 
         fc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
 
@@ -76,13 +80,13 @@ public class ImprimirMenu {
         if (seleccion == JFileChooser.APPROVE_OPTION) {
 
             ruta = fc.getSelectedFile().toString();
-            ruta = ruta + ".pdf";        
+            ruta = ruta + ".pdf";
             imprimir();
-            
+
         }
-        
+
         if (seleccion == JFileChooser.ERROR_OPTION) {
-         fc.setVisible(false);
+            fc.setVisible(false);
         }
 
     }
