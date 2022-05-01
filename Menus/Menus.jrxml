@@ -3,7 +3,7 @@
 	<parameter name="fecha" class="java.util.Date"/>
 	<parameter name="comida" class="java.lang.String"/>
 	<queryString>
-		<![CDATA[select * from alimentos]]>
+		<![CDATA[select * from alimentos ]]>
 	</queryString>
 	<field name="FECHA" class="java.sql.Date">
 		<fieldDescription><![CDATA[]]></fieldDescription>
